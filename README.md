@@ -1,5 +1,8 @@
 # Parchment
-
+- Add use
+- Add install
+- Add example
+- Add API
 
 
 ## TODO
