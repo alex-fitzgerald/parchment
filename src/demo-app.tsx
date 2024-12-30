@@ -1,11 +1,11 @@
-import './App.css';
+import './demo-app.css';
 import Parchment from "./components/parchment/parchment.tsx";
 import {
     type ReactNode,
     useState
 } from "react";
 import ParchmentSection from "./components/parchment/parchment-section.tsx";
-import ParchmentNavButton from "./components/parchment/nav/parchment-nav-button.tsx";
+import ParchmentSectionLink from "./components/parchment/nav/parchment-nav-button.tsx";
 
 function MyNavButton({isActive, children}: { isActive?: boolean, children: ReactNode }) {
     return (
@@ -14,7 +14,6 @@ function MyNavButton({isActive, children}: { isActive?: boolean, children: React
         </span>
     )
 }
-
 
 function MyFirstSection() {
     return (
@@ -71,17 +70,17 @@ function DemoApp() {
                     />
                 </div>
                 <div>
-                    <ParchmentNavButton to="myFirstSection">
+                    <ParchmentSectionLink to="myFirstSection">
                         {
                             (isActive) => <MyNavButton isActive={isActive}>First</MyNavButton>
                         }
-                    </ParchmentNavButton>
-                    <ParchmentNavButton to="mySecondSection">
+                    </ParchmentSectionLink>
+                    <ParchmentSectionLink to="mySecondSection">
                         <MyNavButton>Second</MyNavButton>
-                    </ParchmentNavButton>
-                    <ParchmentNavButton to="myThirdSection">
+                    </ParchmentSectionLink>
+                    <ParchmentSectionLink to="myThirdSection">
                         <MyNavButton>Third</MyNavButton>
-                    </ParchmentNavButton>
+                    </ParchmentSectionLink>
                 </div>
             </div>
             <Parchment
