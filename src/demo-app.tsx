@@ -1,11 +1,11 @@
 import './demo-app.css';
-import Parchment from "./components/parchment/parchment.tsx";
+import Parchment from "./components/parchment.tsx";
 import {
     type ReactNode,
     useState
 } from "react";
-import ParchmentSection from "./components/parchment/parchment-section.tsx";
-import ParchmentSectionLink from "./components/parchment/parchment-nav-button.tsx";
+import ParchmentSection from "./components/parchment-section.tsx";
+import ParchmentSectionLink from "./components/parchment-button.tsx";
 
 function MyNavButton({isActive, children}: { isActive?: boolean, children: ReactNode }) {
     return (

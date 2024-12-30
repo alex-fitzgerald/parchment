@@ -1,5 +1,5 @@
-import useWheelEvent from "../../../hooks/useScrollEvent.ts";
-import useNavigateParchment, { ParchmentDirection } from "../../../hooks/useNavigateParchment.ts";
+import useWheelEvent from "../../hooks/useScrollEvent.ts";
+import useNavigateParchment, { ParchmentDirection } from "../../hooks/useNavigateParchment.ts";
 
 export default function NavigateByWheelPlugin() {
     const navigationParchment = useNavigateParchment();

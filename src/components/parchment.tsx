@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import NavigateByDirectionalKeysPlugin from "./plugins/navigate-by-directional-keys-plugin.tsx";
 import NavigateByWheelPlugin from "./plugins/navigate-by-wheel-plugin.tsx";
-import ParchmentProvider from "../../context/parchment-provider.tsx";
+import ParchmentProvider from "../context/parchment-provider.tsx";
 
 interface ParchmentProps {
     children: ReactNode;

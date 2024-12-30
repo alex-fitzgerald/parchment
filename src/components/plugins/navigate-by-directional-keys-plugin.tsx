@@ -1,5 +1,5 @@
-import useNavigateParchment, { ParchmentDirection } from "../../../hooks/useNavigateParchment.ts";
-import useKeydownEvent from "../../../hooks/useKeydownEvent.ts";
+import useNavigateParchment, { ParchmentDirection } from "../../hooks/useNavigateParchment.ts";
+import useKeydownEvent from "../../hooks/useKeydownEvent.ts";
 
 const DOWN = 'ArrowDown';
 const RIGHT = 'ArrowRight';
