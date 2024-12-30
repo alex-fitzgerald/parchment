@@ -1,22 +1,38 @@
 import { ReactNode } from "react";
 import { ParchmentSectionKey } from "../../../types.ts";
 import useScrollToParchmentSection from "../../../hooks/useScrollToParchmentSection.ts";
+import parchmentStore from "../../../state/parchment-store.ts";
 
 interface LinkProps {
     /**
      * Content to display in the link.
      */
-    children: ReactNode;
+    children: ReactNode | ((isActive?: boolean) => ReactNode);
     /**
      * The node to scroll to when the link is clicked.
      */
-    parchmentSectionKey: ParchmentSectionKey;
+    to: ParchmentSectionKey;
 }
 
-export default function ParchmentNavButton({ children, parchmentSectionKey }: LinkProps) {
+export default function ParchmentNavButton({ children, to }: LinkProps) {
+    const { currentParchmentSectionKey, parchmentSections } = parchmentStore();
     const scrollToParchmentSection = useScrollToParchmentSection();
+    const childIsFunction = typeof children === 'function';
+
+    if (!to || !parchmentSections[to]) {
+        return childIsFunction ? children() : children
+    }
+
     function handleClick() {
-        scrollToParchmentSection(parchmentSectionKey);
+        scrollToParchmentSection(to);
+    }
+
+    if (childIsFunction) {
+        return (
+            <button onClick={handleClick}>
+                { children(to === currentParchmentSectionKey) }
+            </button>
+        );
     }
 
     return (

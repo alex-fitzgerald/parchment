@@ -5,7 +5,7 @@ import {
 } from 'react';
 import parchmentStore from "../../state/parchment-store.ts";
 import useCurrentViewObserver from "../../hooks/useCurrentViewObserver.ts";
-import {ParchmentSectionKey} from "../../types.ts";
+import { type ParchmentSectionKey } from "../../types.ts";
 
 interface ParchmentSectionProps {
     children: ReactNode;

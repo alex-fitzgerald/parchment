@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ParchmentSection } from "../types.ts";
+import { ParchmentSectionRef } from "../types.ts";
 import parchmentStore from "../state/parchment-store.ts";
 
 /**
@@ -7,14 +7,14 @@ import parchmentStore from "../state/parchment-store.ts";
  * parchment section. When the provided section enters the viewport,
  * update the `currentParchmentSection` accordingly.
  */
-export default function useCurrentViewObserver(parchmentSectionElement: ParchmentSection['current']) {
+export default function useCurrentViewObserver(parchmentSectionElement: ParchmentSectionRef['current']) {
     const { setCurrentParchmentSection } = parchmentStore();
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
-            for (const { isIntersecting, target } of entries) {
+            for (const {isIntersecting, target} of entries) {
                 if (isIntersecting && target instanceof HTMLElement) {
-                    const { parchmentSectionKey } = target.dataset;
+                    const {parchmentSectionKey} = target.dataset;
                     if (!parchmentSectionKey) {
                         return;
                     }
@@ -22,7 +22,7 @@ export default function useCurrentViewObserver(parchmentSectionElement: Parchmen
                     setCurrentParchmentSection(parchmentSectionKey);
                 }
             }
-        });
+        }, { threshold: 0.5 });
 
         if (parchmentSectionElement) {
             observer.observe(parchmentSectionElement);

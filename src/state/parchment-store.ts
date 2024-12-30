@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import {
-    ParchmentSection,
+    ParchmentSectionRef,
     ParchmentSectionKey,
     ParchmentSections
 } from "../types.ts";
@@ -10,7 +10,7 @@ interface ParchmentStore {
     setCurrentParchmentSection: (currentParchmentSection: ParchmentSectionKey) => void;
 
     parchmentSections: ParchmentSections;
-    addParchmentSection: (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSection) => void;
+    addParchmentSection: (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef) => void;
 }
 
 export default create<ParchmentStore>((set) => ({
@@ -18,7 +18,7 @@ export default create<ParchmentStore>((set) => ({
     setCurrentParchmentSection: (currentParchmentSectionKey) => set({ currentParchmentSectionKey }),
 
     parchmentSections: {},
-    addParchmentSection: (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSection) => set(({ parchmentSections }) => {
+    addParchmentSection: (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef) => set(({ parchmentSections }) => {
         const newParchmentSections = parchmentSections;
         newParchmentSections[parchmentSectionKey] = parchmentSection;
 
