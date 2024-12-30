@@ -15,13 +15,6 @@ export default function useNavigateParchment() {
         const currentIndex = currentParchmentSectionKey ? parchmentSectionIndexes.indexOf(String(currentParchmentSectionKey)) : 0;
         const nextPageIndex = direction === ParchmentDirection.DOWN ? currentIndex + 1 : currentIndex - 1;
         const nextPageKey = parchmentSectionIndexes[nextPageIndex];
-        console.log(
-            'currentParchmentSectionKey:', currentParchmentSectionKey,
-            'currentIndex:', currentIndex,
-            'nextPageIndex:', nextPageIndex,
-            'nextPageKey:', nextPageKey,
-            'parchmentSectionIndexes:', parchmentSectionIndexes
-        )
 
         scrollToParchmentSection(nextPageKey);
     }
