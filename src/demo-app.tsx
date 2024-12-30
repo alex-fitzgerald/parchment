@@ -5,7 +5,7 @@ import {
     useState
 } from "react";
 import ParchmentSection from "./components/parchment/parchment-section.tsx";
-import ParchmentSectionLink from "./components/parchment/nav/parchment-nav-button.tsx";
+import ParchmentSectionLink from "./components/parchment/parchment-nav-button.tsx";
 
 function MyNavButton({isActive, children}: { isActive?: boolean, children: ReactNode }) {
     return (
