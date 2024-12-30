@@ -5,7 +5,7 @@ import {
     useState
 } from "react";
 import ParchmentSection from "./components/parchment-section.tsx";
-import ParchmentSectionLink from "./components/parchment-button.tsx";
+import ParchmentButton from "./components/parchment-button.tsx";
 
 function MyNavButton({isActive, children}: { isActive?: boolean, children: ReactNode }) {
     return (
@@ -70,17 +70,17 @@ function DemoApp() {
                     />
                 </div>
                 <div>
-                    <ParchmentSectionLink to="myFirstSection">
+                    <ParchmentButton to="myFirstSection">
                         {
                             (isActive) => <MyNavButton isActive={isActive}>First</MyNavButton>
                         }
-                    </ParchmentSectionLink>
-                    <ParchmentSectionLink to="mySecondSection">
+                    </ParchmentButton>
+                    <ParchmentButton to="mySecondSection">
                         <MyNavButton>Second</MyNavButton>
-                    </ParchmentSectionLink>
-                    <ParchmentSectionLink to="myThirdSection">
+                    </ParchmentButton>
+                    <ParchmentButton to="myThirdSection">
                         <MyNavButton>Third</MyNavButton>
-                    </ParchmentSectionLink>
+                    </ParchmentButton>
                 </div>
             </div>
             <Parchment
