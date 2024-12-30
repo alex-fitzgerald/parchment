@@ -6,6 +6,7 @@ import {
 } from "react";
 import ParchmentSection from "./components/parchment-section.tsx";
 import ParchmentButton from "./components/parchment-button.tsx";
+import ParchmentNav from "./components/parchment-nav.tsx";
 
 function MyNavButton({isActive, children}: { isActive?: boolean, children: ReactNode }) {
     return (
@@ -69,7 +70,7 @@ function DemoApp() {
                       isActive={navigateByDirectionalKeys}
                     />
                 </div>
-                <div>
+                <ParchmentNav>
                     <ParchmentButton to="myFirstSection">
                         {
                             (isActive) => <MyNavButton isActive={isActive}>First</MyNavButton>
@@ -81,7 +82,7 @@ function DemoApp() {
                     <ParchmentButton to="myThirdSection">
                         <MyNavButton>Third</MyNavButton>
                     </ParchmentButton>
-                </div>
+                </ParchmentNav>
             </div>
             <Parchment
               enableWheelNavigation={navigateByWheel}
