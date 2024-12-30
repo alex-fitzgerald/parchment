@@ -19,13 +19,6 @@ export default function ParchmentNavButton({ children, to }: LinkProps) {
     const scrollToParchmentSection = useScrollToParchmentSection();
     const childIsFunction = typeof children === 'function';
 
-    console.log(
-        'currentParchmentSectionKey', currentParchmentSectionKey,
-        'parchmentSections', parchmentSections,
-        'scrollToParchmentSection', scrollToParchmentSection,
-        'childIsFunction', childIsFunction
-    )
-
     if (!to || !parchmentSections || !parchmentSections[to]) {
         return childIsFunction ? children() : children
     }
