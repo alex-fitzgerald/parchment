@@ -9,10 +9,7 @@ import ParchmentNavButton from "./components/parchment/nav/parchment-nav-button.
 
 function MyNavButton({isActive, children}: { isActive?: boolean, children: ReactNode }) {
     return (
-        <span style={{
-            border: '1px solid',
-            borderColor: isActive ? 'red' : 'transparent'
-        }}>
+        <span style={{ color: isActive ? 'red' : 'blue' }}>
             {children}
         </span>
     )
@@ -63,14 +60,14 @@ function DemoApp() {
             <div style={{position: 'fixed', display: 'flex', flexDirection: 'column'}}>
                 <div style={{display: 'flex', flexDirection: 'column'}}>
                     <ToggleButton
-                        onClick={() => setNavigateByWheel(!navigateByWheel)}
-                        label="Wheel nav"
-                        isActive={navigateByWheel}
+                      onClick={() => setNavigateByWheel(!navigateByWheel)}
+                      label="Wheel nav"
+                      isActive={navigateByWheel}
                     />
                     <ToggleButton
-                        onClick={() => setNavigateByDirectionalKeys(!navigateByDirectionalKeys)}
-                        label="Keyboard nav"
-                        isActive={navigateByDirectionalKeys}
+                      onClick={() => setNavigateByDirectionalKeys(!navigateByDirectionalKeys)}
+                      label="Keyboard nav"
+                      isActive={navigateByDirectionalKeys}
                     />
                 </div>
                 <div>
@@ -87,10 +84,9 @@ function DemoApp() {
                     </ParchmentNavButton>
                 </div>
             </div>
-
             <Parchment
-                enableWheelNavigation={navigateByWheel}
-                enableKeyboardNavigation={navigateByDirectionalKeys}
+              enableWheelNavigation={navigateByWheel}
+              enableKeyboardNavigation={navigateByDirectionalKeys}
             >
                 <ParchmentSection parchmentSectionKey="myFirstSection">
                     <MyFirstSection />
