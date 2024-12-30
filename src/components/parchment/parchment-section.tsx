@@ -3,9 +3,9 @@ import {
     useEffect,
     useRef
 } from 'react';
-import parchmentStore from "../../state/parchment-store.ts";
 import useCurrentViewObserver from "../../hooks/useCurrentViewObserver.ts";
 import { type ParchmentSectionKey } from "../../types.ts";
+import useParchmentContext from "../../hooks/useParchmentContext.ts";
 
 interface ParchmentSectionProps {
     children: ReactNode;
@@ -13,7 +13,7 @@ interface ParchmentSectionProps {
 }
 
 export default function ParchmentSection({ children, parchmentSectionKey }: Readonly<ParchmentSectionProps>) {
-    const { addParchmentSection } = parchmentStore();
+    const { addParchmentSection } = useParchmentContext();
     const parchmentSectionRef = useRef(null);
     useCurrentViewObserver(parchmentSectionRef.current);
     /**
@@ -23,7 +23,7 @@ export default function ParchmentSection({ children, parchmentSectionKey }: Read
      */
     useEffect(() => {
         if (parchmentSectionRef.current) {
-            addParchmentSection(parchmentSectionKey, parchmentSectionRef);
+            addParchmentSection?.(parchmentSectionKey, parchmentSectionRef);
         }
     }, [addParchmentSection, parchmentSectionKey, parchmentSectionRef]);
 

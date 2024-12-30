@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { ParchmentSectionKey } from "../../../types.ts";
 import useScrollToParchmentSection from "../../../hooks/useScrollToParchmentSection.ts";
-import parchmentStore from "../../../state/parchment-store.ts";
+import useParchmentContext from "../../../hooks/useParchmentContext.ts";
 
 interface LinkProps {
     /**
@@ -15,11 +15,18 @@ interface LinkProps {
 }
 
 export default function ParchmentNavButton({ children, to }: LinkProps) {
-    const { currentParchmentSectionKey, parchmentSections } = parchmentStore();
+    const { currentParchmentSectionKey, parchmentSections } = useParchmentContext();
     const scrollToParchmentSection = useScrollToParchmentSection();
     const childIsFunction = typeof children === 'function';
 
-    if (!to || !parchmentSections[to]) {
+    console.log(
+        'currentParchmentSectionKey', currentParchmentSectionKey,
+        'parchmentSections', parchmentSections,
+        'scrollToParchmentSection', scrollToParchmentSection,
+        'childIsFunction', childIsFunction
+    )
+
+    if (!to || !parchmentSections || !parchmentSections[to]) {
         return childIsFunction ? children() : children
     }
 

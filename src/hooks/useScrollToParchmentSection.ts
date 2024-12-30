@@ -1,12 +1,16 @@
 import { ParchmentSectionKey } from "../types.ts";
-import parchmentStore from "../state/parchment-store.ts";
+import useParchmentContext from "./useParchmentContext.ts";
 
 export default function useScrollToParchmentSection() {
-    const { parchmentSections } = parchmentStore();
+    const { parchmentSections } = useParchmentContext();
+
+    if (!parchmentSections) {
+        return () => {};
+    }
 
     return (parchmentSectionKey: ParchmentSectionKey) => {
         const nextSection = parchmentSections[parchmentSectionKey];
 
-        nextSection?.current?.scrollIntoView({ behavior: 'smooth' });
+        nextSection?.ref?.current?.scrollIntoView({ behavior: 'smooth' });
     }
 }

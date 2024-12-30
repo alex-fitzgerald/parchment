@@ -1,5 +1,5 @@
-import parchmentStore from "../state/parchment-store.ts";
 import useScrollToParchmentSection from "./useScrollToParchmentSection.ts";
+import useParchmentContext from "./useParchmentContext.ts";
 
 export enum ParchmentDirection {
     UP = 'up',
@@ -7,8 +7,12 @@ export enum ParchmentDirection {
 }
 
 export default function useNavigateParchment() {
-    const { currentParchmentSectionKey, parchmentSections } = parchmentStore();
+    const { currentParchmentSectionKey, parchmentSections } = useParchmentContext();
     const scrollToParchmentSection = useScrollToParchmentSection();
+
+    if (!parchmentSections) {
+        return () => {};
+    }
     const parchmentSectionIndexes = Object.keys(parchmentSections);
 
     return (direction: ParchmentDirection) => {
