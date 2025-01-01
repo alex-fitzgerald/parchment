@@ -1,18 +1,18 @@
 import {
     type ReactNode,
     useEffect,
-    useRef
+    useRef,
 } from 'react';
-import useCurrentViewObserver from "../hooks/useCurrentViewObserver.ts";
-import { type ParchmentSectionKey } from "../types.ts";
-import useParchmentContext from "../hooks/useParchmentContext.ts";
+import useCurrentViewObserver from '../hooks/useCurrentViewObserver.ts';
+import { type ParchmentSectionKey } from '../types.ts';
+import useParchmentContext from '../hooks/useParchmentContext.ts';
 
 interface ParchmentSectionProps {
     children: ReactNode;
-    parchmentSectionKey: ParchmentSectionKey;
+    id: ParchmentSectionKey;
 }
 
-export default function ParchmentSection({ children, parchmentSectionKey }: Readonly<ParchmentSectionProps>) {
+export default function ParchmentSection({ children, id }: Readonly<ParchmentSectionProps>) {
     const { addParchmentSection } = useParchmentContext();
     const parchmentSectionRef = useRef(null);
     useCurrentViewObserver(parchmentSectionRef.current);
@@ -23,12 +23,20 @@ export default function ParchmentSection({ children, parchmentSectionKey }: Read
      */
     useEffect(() => {
         if (parchmentSectionRef.current) {
-            addParchmentSection?.(parchmentSectionKey, parchmentSectionRef);
+            addParchmentSection?.(id, parchmentSectionRef);
         }
-    }, [addParchmentSection, parchmentSectionKey, parchmentSectionRef]);
+    }, [addParchmentSection, id, parchmentSectionRef]);
 
     return (
-        <section ref={parchmentSectionRef} style={{ boxSizing: 'border-box', minHeight: '100dvh' }} data-parchment-section-key={parchmentSectionKey}>
+        <section
+            id={id}
+            ref={parchmentSectionRef}
+            style={{
+                scrollSnapAlign: 'start',
+                boxSizing: 'border-box',
+                minHeight: '100dvh',
+            }}
+        >
             {children}
         </section>
     );

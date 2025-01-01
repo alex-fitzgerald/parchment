@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
-import ParchmentProvider from "../context/parchment-provider.tsx";
+import ParchmentProvider from '../state/parchment-provider.tsx';
 
-export default function ParchmentNav({ children }: Readonly<{ children: ReactNode; }>) {
+export default function ParchmentNav({ children }: Readonly<{ children: ReactNode }>) {
     return (
         <ParchmentProvider>
             <nav>

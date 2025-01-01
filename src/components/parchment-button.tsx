@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
-import { ParchmentSectionKey } from "../types.ts";
-import useScrollToParchmentSection from "../hooks/useScrollToParchmentSection.ts";
-import useParchmentContext from "../hooks/useParchmentContext.ts";
+import { ReactNode } from 'react';
+import { ParchmentSectionKey } from '../types.ts';
+import useScrollToParchmentSection from '../hooks/useScrollToParchmentSection.ts';
+import useParchmentContext from '../hooks/useParchmentContext.ts';
 
 interface LinkProps {
     /**
@@ -15,14 +15,14 @@ interface LinkProps {
 }
 
 export default function Button({ children, to }: LinkProps) {
-    const { currentParchmentSectionKey, parchmentSections } = useParchmentContext();
+    const { currentSectionId, parchmentSections } = useParchmentContext();
     const scrollToParchmentSection = useScrollToParchmentSection();
     const childIsFunction = typeof children === 'function';
 
-    console.log(currentParchmentSectionKey, parchmentSections, to);
+    console.log(currentSectionId, parchmentSections, to);
 
     if (!to || !parchmentSections || !parchmentSections[to]) {
-        return childIsFunction ? children() : children
+        return childIsFunction ? children() : children;
     }
 
     function handleClick() {
@@ -32,7 +32,7 @@ export default function Button({ children, to }: LinkProps) {
     if (childIsFunction) {
         return (
             <button onClick={handleClick}>
-                { children(to === currentParchmentSectionKey) }
+                { children(to === currentSectionId) }
             </button>
         );
     }
@@ -41,5 +41,5 @@ export default function Button({ children, to }: LinkProps) {
         <button onClick={handleClick}>
             {children}
         </button>
-    )
+    );
 }
