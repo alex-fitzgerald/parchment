@@ -3,12 +3,11 @@
 - Add install
 - Add example
 - Add API
-- Memoize callbacks?
-- Remove ref on unmount 
+- Memoize callbackss
+- Zero dependencies
+- No scroll-jacking
 
 ## TODO
-- If last item and scroll down, remove scroll override
 - Change 'currentSection' to 'sectionInViewport'
-- Escape key to remove scroll / key override
-- Visual indicator for scroll override
+- Add gradients for how much is in viewport
 - Visual indicator for keypress
