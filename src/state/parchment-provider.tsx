@@ -26,12 +26,24 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
         }));
     };
 
+    const removeParchmentSection = (parchmentSectionKey: ParchmentSectionKey) => {
+        if (!parchmentSections[parchmentSectionKey]) {
+            return;
+        }
+
+        const newParchmentSections = { ...parchmentSections };
+        delete newParchmentSections[parchmentSectionKey];
+
+        setParchmentSections(newParchmentSections);
+    };
+
     const value = {
         currentParchmentSectionKey,
         setCurrentParchmentSection,
 
         parchmentSections,
         addParchmentSection,
+        removeParchmentSection,
     };
 
     return (

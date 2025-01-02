@@ -13,7 +13,7 @@ interface ParchmentSectionProps {
 }
 
 export default function ParchmentSection({ children, id }: Readonly<ParchmentSectionProps>) {
-    const { addParchmentSection } = useParchmentContext();
+    const { addParchmentSection, parchmentSections, removeParchmentSection } = useParchmentContext();
     const parchmentSectionRef = useRef(null);
     useCurrentViewObserver(parchmentSectionRef.current);
     /**
@@ -22,9 +22,11 @@ export default function ParchmentSection({ children, id }: Readonly<ParchmentSec
      * This allows for it to be easily accessed by other components.
      */
     useEffect(() => {
-        if (parchmentSectionRef.current) {
+        if (parchmentSectionRef.current && !parchmentSections?.[id]) {
             addParchmentSection?.(id, parchmentSectionRef);
         }
+
+        return () => removeParchmentSection?.(id);
     }, [addParchmentSection, id, parchmentSectionRef]);
 
     return (
