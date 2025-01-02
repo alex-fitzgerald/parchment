@@ -1,9 +1,5 @@
 import js from "@eslint/js";
 import ts from "typescript-eslint";
-import globals from "globals";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import reactPlugin from "eslint-plugin-react";
 import stylistic from '@stylistic/eslint-plugin';
 
 export default ts.config(
@@ -18,9 +14,6 @@ export default ts.config(
   {
     plugins: {
       "@stylistic": stylistic,
-    },
-    rules: {
-      // "@stylistic/jsx-indent-props": ["error", 2],
     },
     languageOptions: {
       parserOptions: {

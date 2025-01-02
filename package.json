@@ -1,6 +1,7 @@
 {
   "name": "parchment",
-  "private": true,
+  "private": false,
+  "license": "MIT",
   "version": "0.0.1",
   "type": "module",
   "main": "dist/index.js",
@@ -10,9 +11,11 @@
   },
   "scripts": {
     "dev": "vite",
+    "test": "vitest run",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ci": "echo 'Running CI' && npm run lint && npm run test && npm run build"
   },
   "peerDependencies": {
     "react": "^18.3.1",
