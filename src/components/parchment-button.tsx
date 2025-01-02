@@ -19,8 +19,6 @@ export default function Button({ children, to }: LinkProps) {
     const scrollToParchmentSection = useScrollToParchmentSection();
     const childIsFunction = typeof children === 'function';
 
-    console.log(currentParchmentSectionKey, parchmentSections, to);
-
     if (!to || !parchmentSections || !parchmentSections[to]) {
         return childIsFunction ? children() : children;
     }
