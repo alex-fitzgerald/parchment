@@ -3,8 +3,9 @@
 - Add install
 - Add example
 - Add API
-- Memoize callbacks?
-- Remove ref on unmount 
+- Memoize callbackss
+- Zero dependencies
+- No scroll-jacking
 
 ## TODO
 - If last item and scroll down, remove scroll override
