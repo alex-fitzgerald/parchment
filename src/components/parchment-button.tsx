@@ -15,11 +15,11 @@ interface LinkProps {
 }
 
 export default function Button({ children, to }: LinkProps) {
-    const { currentSectionId, parchmentSections } = useParchmentContext();
+    const { currentParchmentSectionKey, parchmentSections } = useParchmentContext();
     const scrollToParchmentSection = useScrollToParchmentSection();
     const childIsFunction = typeof children === 'function';
 
-    console.log(currentSectionId, parchmentSections, to);
+    console.log(currentParchmentSectionKey, parchmentSections, to);
 
     if (!to || !parchmentSections || !parchmentSections[to]) {
         return childIsFunction ? children() : children;
@@ -32,7 +32,7 @@ export default function Button({ children, to }: LinkProps) {
     if (childIsFunction) {
         return (
             <button onClick={handleClick}>
-                { children(to === currentSectionId) }
+                { children(to === currentParchmentSectionKey) }
             </button>
         );
     }

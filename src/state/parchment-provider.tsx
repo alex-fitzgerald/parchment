@@ -1,4 +1,7 @@
-import { type ReactNode, useState } from 'react';
+import {
+    type ReactNode,
+    useState,
+} from 'react';
 import ParchmentContext from './parchment-context.ts';
 import type {
     ParchmentSectionKey,
@@ -6,20 +9,10 @@ import type {
     ParchmentSections,
 } from '../types.ts';
 
-export default function ParchmentProvider({
-    children,
-}: {
-    children: ReactNode;
-}) {
-    const [parchmentSections, setParchmentSections] = useState<ParchmentSections>(
-        {},
-    );
-    const [currentParchmentSectionKey, setCurrentParchmentSection]
-    = useState<ParchmentSectionKey | null>(null);
-    const addParchmentSection = (
-        parchmentSectionKey: ParchmentSectionKey,
-        parchmentSection: ParchmentSectionRef,
-    ) => {
+export default function ParchmentProvider({ children }: { children: ReactNode }) {
+    const [parchmentSections, setParchmentSections] = useState<ParchmentSections>({});
+    const [currentParchmentSectionKey, setCurrentParchmentSection] = useState<ParchmentSectionKey | null>(null);
+    const addParchmentSection = (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef) => {
         if (parchmentSections[parchmentSectionKey]) {
             return;
         }

@@ -6,16 +6,11 @@ import type {
 import { createContext } from 'react';
 
 interface ParchmentContext {
-    currentSectionId?: ParchmentSectionKey | null;
-    setCurrentParchmentSection?: (
-        currentSectionId: ParchmentSectionKey,
-    ) => void;
+    currentParchmentSectionKey?: ParchmentSectionKey | null;
+    setCurrentParchmentSection?: (currentParchmentSection: ParchmentSectionKey) => void;
 
     parchmentSections?: ParchmentSections;
-    addParchmentSection?: (
-        id: ParchmentSectionKey,
-        parchmentSection: ParchmentSectionRef,
-    ) => void;
+    addParchmentSection?: (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef) => void;
 }
 
 export default createContext<ParchmentContext>({} as ParchmentContext);
