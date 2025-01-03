@@ -4,7 +4,8 @@
   "license": "MIT",
   "version": "0.0.1",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alex-fitzgerald/parchment.git"
@@ -12,10 +13,10 @@
   "scripts": {
     "dev": "vite",
     "test": "vitest run",
-    "build": "tsc -b && vite build",
+    "build": "tsup src/index.ts --format cjs,esm",
     "lint": "eslint .",
     "preview": "vite preview",
-    "ci": "echo 'Running CI' && npm run lint && npm run test && npm run build"
+    "ci": "npm run lint && npm run test && npm run build"
   },
   "peerDependencies": {
     "react": "^18.3.1",
@@ -42,5 +43,8 @@
   "files": [
     "/dist",
     "package.json"
-  ]
+  ],
+  "dependencies": {
+    "tsup": "^8.3.5"
+  }
 }
