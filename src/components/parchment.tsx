@@ -2,7 +2,6 @@ import { type ReactNode } from 'react';
 
 interface ParchmentProps {
     children: ReactNode;
-    enableKeyboardNavigation?: boolean;
 }
 
 export default function Parchment({ children }: Readonly<ParchmentProps>) {

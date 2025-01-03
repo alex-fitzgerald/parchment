@@ -10,9 +10,10 @@ import useParchmentContext from '../hooks/useParchmentContext.ts';
 interface ParchmentSectionProps {
     children: ReactNode;
     id: ParchmentSectionKey;
+    className?: string;
 }
 
-export default function ParchmentSection({ children, id }: Readonly<ParchmentSectionProps>) {
+export default function ParchmentSection({ children, id, className }: Readonly<ParchmentSectionProps>) {
     const { addParchmentSection, parchmentSections, removeParchmentSection } = useParchmentContext();
     const parchmentSectionRef = useRef(null);
     useCurrentViewObserver(parchmentSectionRef.current);
@@ -38,6 +39,7 @@ export default function ParchmentSection({ children, id }: Readonly<ParchmentSec
                 boxSizing: 'border-box',
                 minHeight: '100dvh',
             }}
+            className={className}
         >
             {children}
         </section>
