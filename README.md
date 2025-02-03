@@ -12,3 +12,4 @@ API
 - scrollTo,
 - inView,
 - etc...
+- make scrollTo configurable (e.g. start, center, end)
