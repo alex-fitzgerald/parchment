@@ -40,7 +40,7 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
     const scrollTo = (parchmentSectionKey: ParchmentSectionKey) => {
         const nextSection = parchmentSections?.[parchmentSectionKey];
 
-        nextSection?.ref?.current?.scrollIntoView({ behavior: 'smooth' });
+        nextSection?.ref?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
 
     const value = {
