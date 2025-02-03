@@ -65,35 +65,37 @@ function DemoApp() {
             </article>
             <div style={{ flex: 1 }}>
                 <ParchmentProvider>
-                    <div style={{ position: 'fixed', display: 'flex', flexDirection: 'column', gap: '32px', top: '32px', right: '32px' }}>
-                        <Controls snap={snap} toggleSnap={() => setSnap(prevSnap => !prevSnap)} />
-                        <ParchmentButton to="myFirstSection">
-                            {
-                                isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
-                            }
-                        </ParchmentButton>
-                        <ParchmentButton to="mySecondSection">
-                            {
-                                isActive => <MyNavButton isActive={isActive}>Second</MyNavButton>
-                            }
-                        </ParchmentButton>
-                        <ParchmentButton to="myThirdSection">
-                            {
-                                isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
-                            }
-                        </ParchmentButton>
+                    <div style={{ display: 'flex' }}>
+                        <div style={{ position: 'fixed', display: 'flex', flexDirection: 'column', gap: '32px', top: '32px', right: '32px' }}>
+                            <Controls snap={snap} toggleSnap={() => setSnap(prevSnap => !prevSnap)} />
+                            <ParchmentButton to="myFirstSection">
+                                {
+                                    isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
+                                }
+                            </ParchmentButton>
+                            <ParchmentButton to="mySecondSection">
+                                {
+                                    isActive => <MyNavButton isActive={isActive}>Second</MyNavButton>
+                                }
+                            </ParchmentButton>
+                            <ParchmentButton to="myThirdSection">
+                                {
+                                    isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
+                                }
+                            </ParchmentButton>
+                        </div>
+                        <Parchment snap={snap} style={{ display: 'flex', flexGrow: 1, flexDirection: 'column', gap: '256px', padding: '256px 0' }}>
+                            <ParchmentSection id="myFirstSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '500px' }}>
+                                <Section title="My first section" />
+                            </ParchmentSection>
+                            <ParchmentSection id="mySecondSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '500px' }}>
+                                <Section title="My section section" />
+                            </ParchmentSection>
+                            <ParchmentSection id="myThirdSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '500px' }}>
+                                <Section title="My third section" />
+                            </ParchmentSection>
+                        </Parchment>
                     </div>
-                    <Parchment snap={snap} style={{ display: 'flex', flexDirection: 'column', gap: '256px', padding: '256px 0' }}>
-                        <ParchmentSection id="myFirstSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '500px' }}>
-                            <Section title="My first section" />
-                        </ParchmentSection>
-                        <ParchmentSection id="mySecondSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '500px' }}>
-                            <Section title="My section section" />
-                        </ParchmentSection>
-                        <ParchmentSection id="myThirdSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '500px' }}>
-                            <Section title="My third section" />
-                        </ParchmentSection>
-                    </Parchment>
                 </ParchmentProvider>
             </div>
         </main>
