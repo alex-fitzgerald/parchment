@@ -51,7 +51,9 @@ function DemoApp() {
                         Parchment is a simple React library for creating scrollable sections with visual feedback.
                     </p>
                     <p>
-                        It uses the <a target="_blank" href={INTERSECTION_OBSERVER}>IntersectionObserver API</a>
+                        It uses the
+                        {' '}
+                        <a target="_blank" href={INTERSECTION_OBSERVER}>IntersectionObserver API</a>
                         {' '}
                         to determine which section is currently in view and provides a simple API for scrolling to sections.
                     </p>
