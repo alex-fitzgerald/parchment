@@ -2,12 +2,12 @@ import {
     type ReactNode,
     useState,
 } from 'react';
-import ParchmentContext from './parchment-context.ts';
+import ParchmentContext from './parchment-context';
 import type {
     ParchmentSectionKey,
     ParchmentSectionRef,
     ParchmentSections,
-} from '../types.ts';
+} from '../types';
 
 export default function ParchmentProvider({ children }: { children: ReactNode }) {
     const [parchmentSections, setParchmentSections] = useState<ParchmentSections>({});

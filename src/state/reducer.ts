@@ -35,6 +35,7 @@ export default function reducer(state: ParchmentState, { type, payload }: Parchm
             if (!payload || isString(payload) || !('parchmentSection' in payload)) {
                 return state;
             }
+
             return {
                 ...state,
                 parchmentSections: {

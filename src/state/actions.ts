@@ -1,4 +1,4 @@
-import { ParchmentSectionKey, ParchmentSectionRef } from '../types.ts';
+import type { ParchmentSectionKey, ParchmentSectionRef } from '../types';
 
 export const PARCHMENT_ACTION = {
     SET_CURRENT_PARCHMENT_SECTION: 'SET_CURRENT_PARCHMENT_SECTION',
@@ -6,6 +6,7 @@ export const PARCHMENT_ACTION = {
     REMOVE_PARCHMENT_SECTION: 'REMOVE_PARCHMENT_SECTION',
     SET_PARCHMENT_SECTION_IS_IN_VIEWPORT: 'SET_PARCHMENT_SECTION_IS_IN_VIEWPORT',
 };
+
 export type ParchmentAction = typeof PARCHMENT_ACTION[keyof typeof PARCHMENT_ACTION];
 
 interface SetCurrentSectionAction {

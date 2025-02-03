@@ -1,9 +1,9 @@
+import { createContext } from 'react';
 import type {
     ParchmentSectionRef,
     ParchmentSectionKey,
     ParchmentSections,
-} from '../types.ts';
-import { createContext } from 'react';
+} from '../types';
 
 interface ParchmentContext {
     currentParchmentSectionKey?: ParchmentSectionKey | null;
