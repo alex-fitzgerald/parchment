@@ -45,7 +45,7 @@ function DemoApp() {
             <article style={{ flex: 1, alignItems: 'start', textAlign: 'left', padding: '32px' }}>
                 <div style={{ maxWidth: '312px' }}>
                     <h1>
-                        📜 Parchment
+                        📜 React Parchment
                     </h1>
                     <p>
                         Parchment is a simple React library for creating scrollable sections with visual feedback.
