@@ -37,9 +37,9 @@ export default function ParchmentSection({ children, id, className, style }: Rea
             id={id}
             ref={parchmentSectionRef}
             style={{
-                scrollSnapAlign: 'start',
+                scrollSnapAlign: 'center',
                 boxSizing: 'border-box',
-                minHeight: '100dvh',
+                minHeight: '100%',
                 ...style,
             }}
             className={className}
