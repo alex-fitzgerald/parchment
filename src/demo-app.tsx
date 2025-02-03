@@ -58,7 +58,10 @@ function DemoApp() {
                         to determine which section is currently in view and provides a simple API for scrolling to sections.
                     </p>
                     <p>
-                        This information is feedback to the `ParchmentButton` component, and available on the `useParchment` hook.
+                        This information is feed back to the `ParchmentButton` component, and available on the `useParchment` hook.
+                    </p>
+                    <p>
+                        Examples to come...
                     </p>
                     <a href={GITHUB_URL} target="_blank">Visit on Github</a>
                 </div>
