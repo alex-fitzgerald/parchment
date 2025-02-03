@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { ParchmentSectionKey } from '../types.ts';
-import useScrollToParchmentSection from '../hooks/use-scroll-to-parchment-section.ts';
-import useParchmentContext from '../hooks/use-parchment-context.ts';
+import useParchment from '../hooks/use-parchment';
 
 interface LinkProps {
     /**
@@ -15,8 +14,7 @@ interface LinkProps {
 }
 
 export default function Button({ children, to }: LinkProps) {
-    const { currentParchmentSectionKey, parchmentSections } = useParchmentContext();
-    const scrollToParchmentSection = useScrollToParchmentSection();
+    const { currentParchmentSectionKey, parchmentSections, scrollTo } = useParchment();
     const childIsFunction = typeof children === 'function';
 
     if (!to || !parchmentSections || !parchmentSections[to]) {
@@ -24,7 +22,7 @@ export default function Button({ children, to }: LinkProps) {
     }
 
     function handleClick() {
-        scrollToParchmentSection(to);
+        scrollTo(to);
     }
 
     if (childIsFunction) {

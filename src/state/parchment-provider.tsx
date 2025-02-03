@@ -37,6 +37,12 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
         setParchmentSections(newParchmentSections);
     };
 
+    const scrollTo = (parchmentSectionKey: ParchmentSectionKey) => {
+        const nextSection = parchmentSections?.[parchmentSectionKey];
+
+        nextSection?.ref?.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
     const value = {
         currentParchmentSectionKey,
         setCurrentParchmentSection,
@@ -44,6 +50,8 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
         parchmentSections,
         addParchmentSection,
         removeParchmentSection,
+
+        scrollTo,
     };
 
     return (

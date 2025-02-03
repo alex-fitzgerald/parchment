@@ -1,12 +1,12 @@
-import isString from '../utils/is-string.ts';
+import isString from '../utils/is-string';
 import {
     PARCHMENT_ACTION,
     ParchmentReducerAction,
-} from './actions.ts';
+} from './actions';
 import {
     ParchmentSectionKey,
     ParchmentSectionRef,
-} from '../types.ts';
+} from '../types';
 
 const {
     SET_CURRENT_PARCHMENT_SECTION,

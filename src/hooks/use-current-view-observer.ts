@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { ParchmentSectionRef } from '../types.ts';
-import useParchmentContext from './use-parchment-context.ts';
+import { ParchmentSectionRef } from '../types';
+import useParchment from './use-parchment';
 
 /**
  * Creates an IntersectionObserver to monitor the provided
@@ -8,7 +8,7 @@ import useParchmentContext from './use-parchment-context.ts';
  * update the `currentParchmentSection` accordingly.
  */
 export default function useCurrentViewObserver(parchmentSectionElement: ParchmentSectionRef['current']) {
-    const { setCurrentParchmentSection, parchmentSections } = useParchmentContext();
+    const { setCurrentParchmentSection, parchmentSections } = useParchment();
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {

@@ -1,20 +1,22 @@
 import {
+    type CSSProperties,
     type ReactNode,
     useEffect,
     useRef,
 } from 'react';
 import useCurrentViewObserver from '../hooks/use-current-view-observer.ts';
 import { type ParchmentSectionKey } from '../types.ts';
-import useParchmentContext from '../hooks/use-parchment-context.ts';
+import useParchment from '../hooks/use-parchment.ts';
 
 interface ParchmentSectionProps {
     children: ReactNode;
     id: ParchmentSectionKey;
     className?: string;
+    style?: CSSProperties;
 }
 
-export default function ParchmentSection({ children, id, className }: Readonly<ParchmentSectionProps>) {
-    const { addParchmentSection, parchmentSections, removeParchmentSection } = useParchmentContext();
+export default function ParchmentSection({ children, id, className, style }: Readonly<ParchmentSectionProps>) {
+    const { addParchmentSection, parchmentSections, removeParchmentSection } = useParchment();
     const parchmentSectionRef = useRef(null);
     useCurrentViewObserver(parchmentSectionRef.current);
     /**
@@ -38,6 +40,7 @@ export default function ParchmentSection({ children, id, className }: Readonly<P
                 scrollSnapAlign: 'start',
                 boxSizing: 'border-box',
                 minHeight: '100dvh',
+                ...style,
             }}
             className={className}
         >

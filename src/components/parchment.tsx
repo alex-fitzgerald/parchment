@@ -1,13 +1,23 @@
-import { type ReactNode } from 'react';
+import type {
+    CSSProperties,
+    ReactNode,
+} from 'react';
 
 interface ParchmentProps {
     children: ReactNode;
     snap?: boolean;
+    className?: string;
+    style?: CSSProperties;
 }
 
-export default function Parchment({ children, snap }: Readonly<ParchmentProps>) {
+export default function Parchment({
+    children,
+    snap,
+    className,
+    style,
+}: Readonly<ParchmentProps>) {
     return (
-        <div style={{ height: '100%', maxHeight: '100dvh', overflowY: 'auto', scrollSnapType: snap ? 'y mandatory' : '' }}>
+        <div style={{ height: '100%', maxHeight: '100dvh', overflowY: 'auto', scrollSnapType: snap ? 'y mandatory' : '', ...style }} className={className}>
             <div
                 style={{
                     display: 'flex',

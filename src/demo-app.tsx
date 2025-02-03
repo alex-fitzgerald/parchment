@@ -25,11 +25,10 @@ function Section({ title }: { title: string }) {
 }
 
 function Controls({ snap, toggleSnap }: { snap: boolean; toggleSnap: () => void }) {
-    const buttonCopy = `Turn snap ${snap ? 'off' : 'on'}`;
     return (
-        <div style={{ position: 'fixed', top: '8px', right: '8px' }}>
+        <div style={{ position: 'fixed', top: '8px', right: '8px', border: '1px solid', borderColor: snap ? 'var(--foreground)' : 'transparent' }}>
             <button onClick={toggleSnap}>
-                {buttonCopy}
+                Scroll snap
             </button>
         </div>
     );
@@ -60,13 +59,13 @@ function DemoApp() {
                     </ParchmentButton>
                 </div>
                 <Parchment snap={snap}>
-                    <ParchmentSection id="myFirstSection">
+                    <ParchmentSection id="myFirstSection" style={{ padding: '8px', borderRadius: '8px', border: '1px solid white' }}>
                         <Section title="My first section" />
                     </ParchmentSection>
-                    <ParchmentSection id="mySecondSection">
+                    <ParchmentSection id="mySecondSection" style={{ padding: '8px', borderRadius: '8px', border: '1px solid white' }}>
                         <Section title="My section section" />
                     </ParchmentSection>
-                    <ParchmentSection id="myThirdSection">
+                    <ParchmentSection id="myThirdSection" style={{ padding: '8px', borderRadius: '8px', border: '1px solid white' }}>
                         <Section title="My third section" />
                     </ParchmentSection>
                 </Parchment>
