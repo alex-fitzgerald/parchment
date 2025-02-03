@@ -29,8 +29,8 @@ function Section({ title }: { title: string }) {
 
 function Controls({ snap, toggleSnap }: { snap: boolean; toggleSnap: () => void }) {
     return (
-        <div style={{ border: '1px solid', borderColor: snap ? 'var(--foreground)' : 'transparent' }}>
-            <button onClick={toggleSnap}>
+        <div>
+            <button onClick={toggleSnap} style={{ fontSize: '0.875em', color: snap ? 'var(--foreground)' : 'var(--foreground-muted)', boxShadow: snap ? 'var(--neumorphic-shadow-inset)' : 'var(--neumorphic-shadow)', borderRadius: '16px', textShadow: snap ? '0px 0px 4px var(--foreground)' : '' }}>
                 Scroll snap
             </button>
         </div>
