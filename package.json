@@ -4,8 +4,6 @@
   "license": "MIT",
   "version": "0.0.1",
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alex-fitzgerald/parchment.git"
@@ -13,7 +11,7 @@
   "scripts": {
     "dev": "vite",
     "test": "vitest run",
-    "build": "tsup src/index.ts --format cjs,esm",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "ci": "npm run lint && npm run test && npm run build"
