@@ -1,4 +1,4 @@
-import isString from './isString.ts';
+import isString from './is-string.ts';
 import { test, expect } from 'vitest';
 const cases = [
     ['string', true],

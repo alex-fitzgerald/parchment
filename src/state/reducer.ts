@@ -1,4 +1,4 @@
-import isString from '../utils/isString.ts';
+import isString from '../utils/is-string.ts';
 import {
     PARCHMENT_ACTION,
     ParchmentReducerAction,

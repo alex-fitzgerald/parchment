@@ -1,7 +1,7 @@
 import './demo-app.css';
 import Parchment from './components/parchment.tsx';
 import {
-    type ReactNode,
+    type ReactNode, useState,
 } from 'react';
 import ParchmentSection from './components/parchment-section.tsx';
 import ParchmentButton from './components/parchment-button.tsx';
@@ -40,37 +40,47 @@ function MyThirdSection() {
 }
 
 function DemoApp() {
+    const [snap, setSnap] = useState(false);
+    const buttonCopy = `Turn snap ${snap ? 'off' : 'on'}`;
+
     return (
-        <ParchmentProvider>
-            <div style={{ position: 'fixed', display: 'flex', flexDirection: 'column' }}>
-                <ParchmentButton to="myFirstSection">
-                    {
-                        isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
-                    }
-                </ParchmentButton>
-                <ParchmentButton to="mySecondSection">
-                    {
-                        isActive => <MyNavButton isActive={isActive}>Second</MyNavButton>
-                    }
-                </ParchmentButton>
-                <ParchmentButton to="myThirdSection">
-                    {
-                        isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
-                    }
-                </ParchmentButton>
+        <>
+            <div>
+                <button onClick={() => setSnap(prevState => !prevState)}>
+                    {buttonCopy}
+                </button>
             </div>
-            <Parchment>
-                <ParchmentSection id="myFirstSection">
-                    <MyFirstSection />
-                </ParchmentSection>
-                <ParchmentSection id="mySecondSection">
-                    <MySecondSection />
-                </ParchmentSection>
-                <ParchmentSection id="myThirdSection">
-                    <MyThirdSection />
-                </ParchmentSection>
-            </Parchment>
-        </ParchmentProvider>
+            <ParchmentProvider>
+                <div style={{ position: 'fixed', display: 'flex', flexDirection: 'column' }}>
+                    <ParchmentButton to="myFirstSection">
+                        {
+                            isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
+                        }
+                    </ParchmentButton>
+                    <ParchmentButton to="mySecondSection">
+                        {
+                            isActive => <MyNavButton isActive={isActive}>Second</MyNavButton>
+                        }
+                    </ParchmentButton>
+                    <ParchmentButton to="myThirdSection">
+                        {
+                            isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
+                        }
+                    </ParchmentButton>
+                </div>
+                <Parchment snap={snap}>
+                    <ParchmentSection id="myFirstSection">
+                        <MyFirstSection />
+                    </ParchmentSection>
+                    <ParchmentSection id="mySecondSection">
+                        <MySecondSection />
+                    </ParchmentSection>
+                    <ParchmentSection id="myThirdSection">
+                        <MyThirdSection />
+                    </ParchmentSection>
+                </Parchment>
+            </ParchmentProvider>
+        </>
     );
 }
 

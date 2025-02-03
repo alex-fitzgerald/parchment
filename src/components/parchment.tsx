@@ -2,11 +2,12 @@ import { type ReactNode } from 'react';
 
 interface ParchmentProps {
     children: ReactNode;
+    snap?: boolean;
 }
 
-export default function Parchment({ children }: Readonly<ParchmentProps>) {
+export default function Parchment({ children, snap }: Readonly<ParchmentProps>) {
     return (
-        <div style={{ height: '100%', maxHeight: '100dvh', overflowY: 'auto', scrollSnapType: 'y mandatory' }}>
+        <div style={{ height: '100%', maxHeight: '100dvh', overflowY: 'auto', scrollSnapType: snap ? 'y mandatory' : '' }}>
             <div
                 style={{
                     display: 'flex',

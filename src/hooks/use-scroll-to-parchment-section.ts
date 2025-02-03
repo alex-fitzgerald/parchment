@@ -1,5 +1,5 @@
 import { ParchmentSectionKey } from '../types.ts';
-import useParchmentContext from './useParchmentContext.ts';
+import useParchmentContext from './use-parchment-context.ts';
 
 export default function useScrollToParchmentSection() {
     const { parchmentSections } = useParchmentContext();

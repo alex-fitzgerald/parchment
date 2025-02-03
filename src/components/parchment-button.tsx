@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { ParchmentSectionKey } from '../types.ts';
-import useScrollToParchmentSection from '../hooks/useScrollToParchmentSection.ts';
-import useParchmentContext from '../hooks/useParchmentContext.ts';
+import useScrollToParchmentSection from '../hooks/use-scroll-to-parchment-section.ts';
+import useParchmentContext from '../hooks/use-parchment-context.ts';
 
 interface LinkProps {
     /**
