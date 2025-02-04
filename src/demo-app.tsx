@@ -86,20 +86,20 @@ function DemoApp() {
             <div style={{ flex: 1, height: '100%', overflow: 'hidden' }}>
                 <ParchmentProvider>
                     <div style={{ height: '100%', display: 'flex', gap: '32px', alignItems: 'center', flexDirection: isSmallView ? 'column' : 'row' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', flexDirection: isSmallView ? 'row' : 'column', gap: '32px', top: '32px', right: '32px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', flexDirection: isSmallView ? 'row' : 'column', gap: '32px', margin: '32px' }}>
                             <Controls snap={snap} toggleSnap={() => setSnap(prevSnap => !prevSnap)} />
                             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: isSmallView ? 'row' : 'column' }}>
-                                <ParchmentButton to="myFirstSection">
+                                <ParchmentButton toSection="myFirstSection">
                                     {
                                         isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
                                     }
                                 </ParchmentButton>
-                                <ParchmentButton to="mySecondSection">
+                                <ParchmentButton toSection="mySecondSection">
                                     {
                                         isActive => <MyNavButton isActive={isActive}>Second</MyNavButton>
                                     }
                                 </ParchmentButton>
-                                <ParchmentButton to="myThirdSection">
+                                <ParchmentButton toSection="myThirdSection">
                                     {
                                         isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
                                     }

@@ -1,10 +1,10 @@
 import {
     type CSSProperties,
     type ReactNode,
-    useEffect,
+    useLayoutEffect,
     useRef,
 } from 'react';
-import useCurrentViewObserver from '../hooks/use-current-view-observer';
+import observerIntersection from '../hooks/observer-intersection.ts';
 import { type ParchmentSectionKey } from '../types';
 import useParchment from '../hooks/use-parchment';
 
@@ -13,20 +13,22 @@ interface ParchmentSectionProps {
     id: ParchmentSectionKey;
     className?: string;
     style?: CSSProperties;
+    intersectionThreshold?: number;
 }
 
-export default function ParchmentSection({ children, id, className, style }: Readonly<ParchmentSectionProps>) {
-    const { addParchmentSection, parchmentSections, removeParchmentSection } = useParchment();
+export default function ParchmentSection({ children, id, className, style, intersectionThreshold }: Readonly<ParchmentSectionProps>) {
+    const { addParchmentSection, parchmentSections, removeParchmentSection, setCurrentParchmentSection } = useParchment();
     const parchmentSectionRef = useRef(null);
-    useCurrentViewObserver(parchmentSectionRef.current);
+    observerIntersection(parchmentSectionRef.current, setCurrentParchmentSection);
+
     /**
      * On render, add the parchment section ref to state.
      *
      * This allows for it to be easily accessed by other components.
      */
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (parchmentSectionRef.current && !parchmentSections?.[id]) {
-            addParchmentSection?.(id, parchmentSectionRef);
+            addParchmentSection?.(id, parchmentSectionRef, intersectionThreshold);
         }
 
         return () => removeParchmentSection?.(id);

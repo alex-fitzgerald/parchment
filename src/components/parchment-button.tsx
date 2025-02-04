@@ -5,30 +5,33 @@ import useParchment from '../hooks/use-parchment';
 interface LinkProps {
     /**
      * Content to display in the link.
+     *
+     * Optionally accepts a function that receives a boolean for whether
+     * the associated ParchmentLink is in view.
      */
-    children: ReactNode | ((isActive?: boolean) => ReactNode);
+    children: ReactNode | ((hasCrossedThreshold?: boolean) => ReactNode);
     /**
-     * The node to scroll to when the link is clicked.
+     * The parchment section to scroll to when the link is clicked.
      */
-    to: ParchmentSectionKey;
+    toSection: ParchmentSectionKey;
 }
 
-export default function Button({ children, to }: LinkProps) {
+export default function Button({ children, toSection }: LinkProps) {
     const { currentParchmentSectionKey, parchmentSections, scrollTo } = useParchment();
     const childIsFunction = typeof children === 'function';
 
-    if (!to || !parchmentSections || !parchmentSections[to]) {
+    if (!toSection || !parchmentSections || !parchmentSections[toSection]) {
         return childIsFunction ? children() : children;
     }
 
     function handleClick() {
-        scrollTo(to);
+        scrollTo(toSection);
     }
 
     if (childIsFunction) {
         return (
             <button onClick={handleClick}>
-                { children(to === currentParchmentSectionKey) }
+                { children(toSection === currentParchmentSectionKey) }
             </button>
         );
     }

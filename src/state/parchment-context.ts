@@ -8,13 +8,18 @@ import type {
 interface ParchmentContext {
     parchmentContainerRef: RefObject<HTMLDivElement>;
     currentParchmentSectionKey?: ParchmentSectionKey | null;
-    setCurrentParchmentSection?: (currentParchmentSection: ParchmentSectionKey) => void;
+    setCurrentParchmentSection: (currentParchmentSection: ParchmentSectionKey) => void;
 
     parchmentSections?: ParchmentSections;
-    addParchmentSection?: (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef) => void;
+    addParchmentSection: (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef, intersectionThreshold?: number) => void;
     removeParchmentSection?: (parchmentSectionKey: ParchmentSectionKey) => void;
 
     scrollTo: (parchmentSectionKey: ParchmentSectionKey) => void;
+
+    intersectionThreshold: number;
+    setIntersectionThreshold: (threshold: number) => void;
+    scrollIntoViewOptions: ScrollIntoViewOptions;
+    setScrollIntoViewOptions: (options: ScrollIntoViewOptions) => void;
 }
 
 export default createContext<ParchmentContext>({} as ParchmentContext);

@@ -7,8 +7,9 @@ import useParchment from './use-parchment';
  * parchment section. When the provided section enters the viewport,
  * update the `currentParchmentSection` accordingly.
  */
-export default function useCurrentViewObserver(parchmentSectionElement: ParchmentSectionRef['current']) {
-    const { setCurrentParchmentSection, parchmentSections, parchmentContainerRef } = useParchment();
+type ParchmentIntersectionCallback = (id: string) => void;
+export default function observerIntersection(parchmentSectionElement: ParchmentSectionRef['current'], callback: ParchmentIntersectionCallback) {
+    const { parchmentSections, parchmentContainerRef } = useParchment();
 
     useEffect(() => {
         if (!parchmentContainerRef.current) {
@@ -23,7 +24,7 @@ export default function useCurrentViewObserver(parchmentSectionElement: Parchmen
                         return;
                     }
 
-                    setCurrentParchmentSection?.(id);
+                    callback(id);
                 }
             }
         }, { threshold: 0.33, root: parchmentContainerRef.current, rootMargin: '0px' });
@@ -37,5 +38,5 @@ export default function useCurrentViewObserver(parchmentSectionElement: Parchmen
                 observer.unobserve(parchmentSectionElement);
             }
         };
-    }, [parchmentSectionElement, setCurrentParchmentSection]);
+    }, [parchmentSectionElement, callback]);
 }

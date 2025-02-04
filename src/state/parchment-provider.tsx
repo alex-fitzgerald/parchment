@@ -14,7 +14,13 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
     const parchmentContainerRef = useRef<HTMLDivElement>(null);
     const [parchmentSections, setParchmentSections] = useState<ParchmentSections>({});
     const [currentParchmentSectionKey, setCurrentParchmentSection] = useState<ParchmentSectionKey | null>(null);
-    const addParchmentSection = (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef) => {
+    const [intersectionThreshold, setIntersectionThreshold] = useState(0.33);
+    const [scrollIntoViewOptions, setScrollIntoViewOptions] = useState<ScrollIntoViewOptions>({
+        behavior: 'smooth',
+        block: 'center',
+    });
+
+    const addParchmentSection = (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef, parchmentSectionThreshold: number = intersectionThreshold) => {
         if (parchmentSections[parchmentSectionKey]) {
             return;
         }
@@ -24,6 +30,7 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
             [parchmentSectionKey]: {
                 ref: parchmentSection,
                 isInViewport: false,
+                intersectionThreshold: parchmentSectionThreshold,
             },
         }));
     };
@@ -42,7 +49,7 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
     const scrollTo = (parchmentSectionKey: ParchmentSectionKey) => {
         const nextSection = parchmentSections?.[parchmentSectionKey];
 
-        nextSection?.ref?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        nextSection?.ref?.current?.scrollIntoView(scrollIntoViewOptions);
     };
 
     const value = {
@@ -56,6 +63,17 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
         removeParchmentSection,
 
         scrollTo,
+
+        /**
+         * Configuration options
+         */
+        intersectionThreshold,
+        setIntersectionThreshold,
+        scrollIntoViewOptions,
+        setScrollIntoViewOptions: (scrollIntoViewOptions: ScrollIntoViewOptions) => setScrollIntoViewOptions((prevState) => ({
+            ...prevState,
+            ...scrollIntoViewOptions,
+        })),
     };
 
     return (
