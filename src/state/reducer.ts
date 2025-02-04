@@ -1,9 +1,9 @@
 import isString from '../utils/is-string';
 import {
     PARCHMENT_ACTION,
-    ParchmentReducerAction,
+    type ParchmentReducerAction,
 } from './actions';
-import {
+import type {
     ParchmentSectionKey,
     ParchmentSectionRef,
 } from '../types';

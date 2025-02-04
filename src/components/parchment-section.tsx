@@ -4,9 +4,9 @@ import {
     useEffect,
     useRef,
 } from 'react';
-import useCurrentViewObserver from '../hooks/use-current-view-observer.ts';
-import { type ParchmentSectionKey } from '../types.ts';
-import useParchment from '../hooks/use-parchment.ts';
+import useCurrentViewObserver from '../hooks/use-current-view-observer';
+import { type ParchmentSectionKey } from '../types';
+import useParchment from '../hooks/use-parchment';
 
 interface ParchmentSectionProps {
     children: ReactNode;

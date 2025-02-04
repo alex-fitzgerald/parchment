@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, type RefObject } from 'react';
 import type {
     ParchmentSectionRef,
     ParchmentSectionKey,
@@ -6,6 +6,7 @@ import type {
 } from '../types';
 
 interface ParchmentContext {
+    parchmentContainerRef: RefObject<HTMLDivElement>;
     currentParchmentSectionKey?: ParchmentSectionKey | null;
     setCurrentParchmentSection?: (currentParchmentSection: ParchmentSectionKey) => void;
 

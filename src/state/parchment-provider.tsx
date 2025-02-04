@@ -1,5 +1,6 @@
 import {
     type ReactNode,
+    useRef,
     useState,
 } from 'react';
 import ParchmentContext from './parchment-context';
@@ -10,6 +11,7 @@ import type {
 } from '../types';
 
 export default function ParchmentProvider({ children }: { children: ReactNode }) {
+    const parchmentContainerRef = useRef<HTMLDivElement>(null);
     const [parchmentSections, setParchmentSections] = useState<ParchmentSections>({});
     const [currentParchmentSectionKey, setCurrentParchmentSection] = useState<ParchmentSectionKey | null>(null);
     const addParchmentSection = (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef) => {
@@ -44,6 +46,8 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
     };
 
     const value = {
+        parchmentContainerRef,
+
         currentParchmentSectionKey,
         setCurrentParchmentSection,
 

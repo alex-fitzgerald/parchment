@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ParchmentSectionKey } from '../types.ts';
+import { ParchmentSectionKey } from '../types';
 import useParchment from '../hooks/use-parchment';
 
 interface LinkProps {

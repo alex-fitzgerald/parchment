@@ -2,6 +2,7 @@ import type {
     CSSProperties,
     ReactNode,
 } from 'react';
+import useParchment from '../hooks/use-parchment';
 
 interface ParchmentProps {
     children: ReactNode;
@@ -16,8 +17,10 @@ export default function Parchment({
     className,
     style,
 }: Readonly<ParchmentProps>) {
+    const { parchmentContainerRef } = useParchment();
+
     return (
-        <div style={{ height: '100%', width: '100%', overflowY: 'auto', scrollSnapType: snap ? 'y mandatory' : '' }} className={className}>
+        <article ref={parchmentContainerRef} style={{ height: '100%', width: '100%', overflowY: 'auto', scrollSnapType: snap ? 'y mandatory' : '' }} className={className}>
             <div
                 style={{
                     display: 'flex',
@@ -29,6 +32,6 @@ export default function Parchment({
             >
                 {children}
             </div>
-        </div>
+        </article>
     );
 }
