@@ -17,7 +17,7 @@ export default function Parchment({
     style,
 }: Readonly<ParchmentProps>) {
     return (
-        <div style={{ height: '100%', width: '100%', maxHeight: '100dvh', overflowY: 'auto', scrollSnapType: snap ? 'y mandatory' : '' }} className={className}>
+        <div style={{ height: '100%', width: '100%', overflowY: 'auto', scrollSnapType: snap ? 'y mandatory' : '' }} className={className}>
             <div
                 style={{
                     display: 'flex',

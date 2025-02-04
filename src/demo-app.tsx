@@ -2,7 +2,7 @@ import './demo-app.css';
 import Parchment from './components/parchment';
 import {
     useState,
-    type ReactNode,
+    type ReactNode, useEffect,
 } from 'react';
 import ParchmentSection from './components/parchment-section';
 import ParchmentButton from './components/parchment-button';
@@ -37,11 +37,28 @@ function Controls({ snap, toggleSnap }: { snap: boolean; toggleSnap: () => void 
     );
 }
 
+function useIsSmallViewport() {
+    const [isSmallViewport, setIsSmallViewport] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallViewport(window.innerWidth < 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return isSmallViewport;
+}
+
 function DemoApp() {
     const [snap, setSnap] = useState(false);
+    const isSmallView = useIsSmallViewport();
 
     return (
-        <main style={{ display: 'flex', gap: '8px', alignItems: 'center', position: 'relative' }}>
+        <main style={{ height: '100%', display: 'flex', gap: '8px', alignItems: 'center', position: 'relative', flexDirection: isSmallView ? 'column' : 'row' }}>
             <article style={{ flex: 1, alignItems: 'start', textAlign: 'left', padding: '32px' }}>
                 <div style={{ maxWidth: '312px' }}>
                     <h1>
@@ -66,35 +83,37 @@ function DemoApp() {
                     <a href={GITHUB_URL} target="_blank">Visit on Github</a>
                 </div>
             </article>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, height: '100%', overflow: 'hidden' }}>
                 <ParchmentProvider>
-                    <div style={{ display: 'flex' }}>
-                        <div style={{ position: 'fixed', display: 'flex', flexDirection: 'column', gap: '32px', top: '32px', right: '32px' }}>
+                    <div style={{ height: '100%', display: 'flex', gap: '32px', alignItems: 'center', flexDirection: isSmallView ? 'column' : 'row' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', flexDirection: isSmallView ? 'row' : 'column', gap: '32px', top: '32px', right: '32px' }}>
                             <Controls snap={snap} toggleSnap={() => setSnap(prevSnap => !prevSnap)} />
-                            <ParchmentButton to="myFirstSection">
-                                {
-                                    isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
-                                }
-                            </ParchmentButton>
-                            <ParchmentButton to="mySecondSection">
-                                {
-                                    isActive => <MyNavButton isActive={isActive}>Second</MyNavButton>
-                                }
-                            </ParchmentButton>
-                            <ParchmentButton to="myThirdSection">
-                                {
-                                    isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
-                                }
-                            </ParchmentButton>
+                            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: isSmallView ? 'row' : 'column' }}>
+                                <ParchmentButton to="myFirstSection">
+                                    {
+                                        isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
+                                    }
+                                </ParchmentButton>
+                                <ParchmentButton to="mySecondSection">
+                                    {
+                                        isActive => <MyNavButton isActive={isActive}>Second</MyNavButton>
+                                    }
+                                </ParchmentButton>
+                                <ParchmentButton to="myThirdSection">
+                                    {
+                                        isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
+                                    }
+                                </ParchmentButton>
+                            </ul>
                         </div>
-                        <Parchment snap={snap} style={{ display: 'flex', flexGrow: 1, flexDirection: 'column', gap: '256px', padding: '256px 0' }}>
-                            <ParchmentSection id="myFirstSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '500px' }}>
+                        <Parchment snap={snap} style={{ display: 'flex', flexGrow: 1, flexDirection: 'column', gap: '32px', padding: '32px 0' }}>
+                            <ParchmentSection id="myFirstSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '720px' }}>
                                 <Section title="My first section" />
                             </ParchmentSection>
-                            <ParchmentSection id="mySecondSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '500px' }}>
-                                <Section title="My section section" />
+                            <ParchmentSection id="mySecondSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '720px' }}>
+                                <Section title="My second section" />
                             </ParchmentSection>
-                            <ParchmentSection id="myThirdSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '500px' }}>
+                            <ParchmentSection id="myThirdSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '720px' }}>
                                 <Section title="My third section" />
                             </ParchmentSection>
                         </Parchment>
