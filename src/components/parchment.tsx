@@ -7,8 +7,9 @@ import useParchment from '../hooks/use-parchment';
 
 interface ParchmentProps {
     /**
-     * Accepts any children. Only child `ParchmentSections` will
-     * be observed by the IntersectionObserver, but all children are valid.
+     * Accepts any children. Only `ParchmentSections` will
+     * be observed by the IntersectionObserver, but all
+     * children are valid.
      */
     children: ReactNode;
     /**
