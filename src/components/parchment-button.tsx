@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { ParchmentSectionKey } from '../types';
 import useParchment from '../hooks/use-parchment';
 
-interface LinkProps {
+interface ButtonProps {
     /**
      * Content to display in the link.
      *
@@ -16,7 +16,7 @@ interface LinkProps {
     toSection: ParchmentSectionKey;
 }
 
-export default function Button({ children, toSection }: LinkProps) {
+export default function Button({ children, toSection }: ButtonProps) {
     const { currentParchmentSectionKey, parchmentSections, scrollTo } = useParchment();
     const childIsFunction = typeof children === 'function';
 

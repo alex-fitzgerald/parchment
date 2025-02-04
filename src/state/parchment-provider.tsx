@@ -71,10 +71,12 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
         intersectionThreshold,
         setIntersectionThreshold,
         scrollIntoViewOptions,
-        setScrollIntoViewOptions: (scrollIntoViewOptions: ScrollIntoViewOptions) => setScrollIntoViewOpts(prevState => ({
-            ...prevState,
-            ...scrollIntoViewOptions,
-        })),
+        setScrollIntoViewOptions: (scrollIntoViewOptions: ScrollIntoViewOptions) => setScrollIntoViewOpts((prevState) => {
+            return ({
+                ...prevState,
+                ...scrollIntoViewOptions,
+            });
+        }),
     };
 
     return (
