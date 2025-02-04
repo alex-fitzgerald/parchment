@@ -13,10 +13,9 @@ interface ParchmentSectionProps {
     id: ParchmentSectionKey;
     className?: string;
     style?: CSSProperties;
-    intersectionThreshold?: number;
 }
 
-export default function ParchmentSection({ children, id, className, style, intersectionThreshold }: Readonly<ParchmentSectionProps>) {
+export default function ParchmentSection({ children, id, className, style }: Readonly<ParchmentSectionProps>) {
     const { addParchmentSection, parchmentSections, removeParchmentSection, setCurrentParchmentSection } = useParchment();
     const parchmentSectionRef = useRef(null);
     observerIntersection(parchmentSectionRef.current, setCurrentParchmentSection);
@@ -28,7 +27,7 @@ export default function ParchmentSection({ children, id, className, style, inter
      */
     useLayoutEffect(() => {
         if (parchmentSectionRef.current && !parchmentSections?.[id]) {
-            addParchmentSection?.(id, parchmentSectionRef, intersectionThreshold);
+            addParchmentSection?.(id, parchmentSectionRef);
         }
 
         return () => removeParchmentSection?.(id);

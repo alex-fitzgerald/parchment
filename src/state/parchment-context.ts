@@ -11,7 +11,7 @@ interface ParchmentContext {
     setCurrentParchmentSection: (currentParchmentSection: ParchmentSectionKey) => void;
 
     parchmentSections?: ParchmentSections;
-    addParchmentSection: (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef, intersectionThreshold?: number) => void;
+    addParchmentSection: (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef) => void;
     removeParchmentSection?: (parchmentSectionKey: ParchmentSectionKey) => void;
 
     scrollTo: (parchmentSectionKey: ParchmentSectionKey) => void;

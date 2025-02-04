@@ -9,7 +9,7 @@ import useParchment from './use-parchment';
  */
 type ParchmentIntersectionCallback = (id: string) => void;
 export default function observerIntersection(parchmentSectionElement: ParchmentSectionRef['current'], callback: ParchmentIntersectionCallback) {
-    const { parchmentSections, parchmentContainerRef } = useParchment();
+    const { parchmentSections, parchmentContainerRef, intersectionThreshold } = useParchment();
 
     useEffect(() => {
         if (!parchmentContainerRef.current) {
@@ -27,7 +27,7 @@ export default function observerIntersection(parchmentSectionElement: ParchmentS
                     callback(id);
                 }
             }
-        }, { threshold: 0.33, root: parchmentContainerRef.current, rootMargin: '0px' });
+        }, { threshold: intersectionThreshold, root: parchmentContainerRef.current, rootMargin: '0px' });
 
         if (parchmentSectionElement) {
             observer.observe(parchmentSectionElement);

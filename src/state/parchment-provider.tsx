@@ -10,17 +10,19 @@ import type {
     ParchmentSections,
 } from '../types';
 
+const DEFAULT_THRESHOLD = 0.25;
+
 export default function ParchmentProvider({ children }: { children: ReactNode }) {
     const parchmentContainerRef = useRef<HTMLDivElement>(null);
     const [parchmentSections, setParchmentSections] = useState<ParchmentSections>({});
     const [currentParchmentSectionKey, setCurrentParchmentSection] = useState<ParchmentSectionKey | null>(null);
-    const [intersectionThreshold, setIntersectionThreshold] = useState(0.33);
-    const [scrollIntoViewOptions, setScrollIntoViewOptions] = useState<ScrollIntoViewOptions>({
+    const [intersectionThreshold, setIntersectionThreshold] = useState(DEFAULT_THRESHOLD);
+    const [scrollIntoViewOptions, setScrollIntoViewOpts] = useState<ScrollIntoViewOptions>({
         behavior: 'smooth',
         block: 'center',
     });
 
-    const addParchmentSection = (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef, parchmentSectionThreshold: number = intersectionThreshold) => {
+    const addParchmentSection = (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef) => {
         if (parchmentSections[parchmentSectionKey]) {
             return;
         }
@@ -30,7 +32,6 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
             [parchmentSectionKey]: {
                 ref: parchmentSection,
                 isInViewport: false,
-                intersectionThreshold: parchmentSectionThreshold,
             },
         }));
     };
@@ -70,7 +71,7 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
         intersectionThreshold,
         setIntersectionThreshold,
         scrollIntoViewOptions,
-        setScrollIntoViewOptions: (scrollIntoViewOptions: ScrollIntoViewOptions) => setScrollIntoViewOptions((prevState) => ({
+        setScrollIntoViewOptions: (scrollIntoViewOptions: ScrollIntoViewOptions) => setScrollIntoViewOpts(prevState => ({
             ...prevState,
             ...scrollIntoViewOptions,
         })),
