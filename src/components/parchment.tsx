@@ -23,6 +23,9 @@ interface ParchmentProps {
      * If a section has its own threshold specified, that will take precedence.
      */
     intersectionThreshold?: number;
+    /**
+     * Sets options for the `scrollIntoView` method, when a ParchmentButton is clicked.
+     */
     scrollIntoViewOptions?: ScrollIntoViewOptions;
 }
 
