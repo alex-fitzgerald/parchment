@@ -18,7 +18,7 @@
     --foreground: black;
     --foreground-muted: gray;
     --background: #e7e7e7;
-    --accent: 0, 100%, 50%;
+    --accent: 240, 50%, 50%;
 
     --neumorphic-shadow: 7px 7px 14px #c4c4c4, -7px -7px 14px #ffffff;
     --neumorphic-shadow--active:

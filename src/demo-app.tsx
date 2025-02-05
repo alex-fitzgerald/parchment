@@ -13,7 +13,7 @@ const GITHUB_URL = 'https://github.com/alex-fitzgerald/parchment';
 
 function MyNavButton({ isActive, children }: { isActive?: boolean; children: ReactNode }) {
     return (
-        <span style={{ color: isActive ? 'hsl(var(--accent))' : 'var(--foreground)' }}>
+        <span style={{ color: isActive ? 'hsla(var(--accent), 50%)' : 'var(--foreground)', textShadow: isActive ? '0px 0px 4px hsla(var(--accent), 80%)' : '' }}>
             {children}
         </span>
     );
