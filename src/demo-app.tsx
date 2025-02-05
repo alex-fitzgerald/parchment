@@ -61,7 +61,7 @@ function DemoApp() {
 
     return (
         <main className={isSmallView ? 'column' : ''}>
-            <article>
+            <article className="blurb-container">
                 <div className="blurb">
                     <h1>
                         📜 React Parchment
