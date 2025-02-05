@@ -47,7 +47,7 @@ body {
     min-width: 320px;
     height: 100%;
 
-    p {
+    h1, p {
         color: var(--foreground);
     }
 }
