@@ -3,6 +3,9 @@
     line-height: 1.5;
     font-weight: 400;
 
+    --tight: 8px;
+    --spacious: 32px;
+
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
@@ -15,10 +18,13 @@
     --foreground: black;
     --foreground-muted: gray;
     --background: #e7e7e7;
-    --accent: red;
+    --accent: 0, 100%, 50%;
 
     --neumorphic-shadow: 7px 7px 14px #c4c4c4, -7px -7px 14px #ffffff;
-    --neumorphic-shadow-inset:  inset 7px 7px 14px #c4c4c4, inset -7px -7px 14px #ffffff;
+    --neumorphic-shadow--active:
+            inset 7px 7px 14px #c4c4c4, inset -7px -7px 14px #ffffff,
+            inset -6px -6px 12px -6px hsla(var(--accent), 50%)
+;
 
     @media (prefers-color-scheme: dark) {
         --foreground: white;
@@ -50,7 +56,7 @@ body {
 }
 
 button {
-    border-radius: 8px;
+    border-radius: var(--tight);
     padding: 0.6em 1.2em;
     font-size: 1em;
     font-weight: 500;
@@ -59,4 +65,72 @@ button {
     background-color: transparent;
     cursor: pointer;
     transition: border-color 0.25s;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    gap: var(--tight);
+    align-items: center;
+    position: relative;
+    flex-direction: row;
+}
+
+article {
+    flex: 1;
+    align-items: start;
+    text-align: left;
+    padding: var(--spacious);
+}
+
+.blurb {
+    max-width: 312px;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.parchment-demo-wrapper {
+    height: 100%;
+    display: flex;
+    gap: var(--spacious);
+    align-items: center;
+    flex-direction: row;
+}
+/*style={{ display: 'flex', alignItems: 'center', flexDirection: isSmallView ? 'row' : 'column', gap: 'var(--spacious)', margin: 'var(--spacious)' }}*/
+.parchment-nav-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--spacious);
+    margin: var(--spacious);
+}
+
+.parchment {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: var(--spacious);
+    padding: var(--spacious) 0;
+}
+
+.parchment-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--tight);
+    padding: var(--tight);
+    border-radius: var(--tight);
+    border: 1px solid rgba(125, 125, 125, 0.5);
+    max-height: 720px;
+    width: 100%;
 }

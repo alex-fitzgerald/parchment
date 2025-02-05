@@ -9,12 +9,11 @@ import ParchmentSection from './components/parchment-section';
 import ParchmentButton from './components/parchment-button';
 import ParchmentProvider from './state/parchment-provider';
 
-const INTERSECTION_OBSERVER = 'https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API';
 const GITHUB_URL = 'https://github.com/alex-fitzgerald/parchment';
 
 function MyNavButton({ isActive, children }: { isActive?: boolean; children: ReactNode }) {
     return (
-        <span style={{ color: isActive ? 'var(--accent)' : 'var(--foreground)' }}>
+        <span style={{ color: isActive ? 'hsl(var(--accent))' : 'var(--foreground)' }}>
             {children}
         </span>
     );
@@ -22,8 +21,10 @@ function MyNavButton({ isActive, children }: { isActive?: boolean; children: Rea
 
 function Section({ title }: { title: string }) {
     return (
-        <div style={{ height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            {title}
+        <div className="section">
+            <p>
+                {title}
+            </p>
         </div>
     );
 }
@@ -31,7 +32,7 @@ function Section({ title }: { title: string }) {
 function Controls({ snap, toggleSnap }: { snap: boolean; toggleSnap: () => void }) {
     return (
         <div>
-            <button onClick={toggleSnap} style={{ fontSize: '0.875em', color: snap ? 'var(--foreground)' : 'var(--foreground-muted)', boxShadow: snap ? 'var(--neumorphic-shadow-inset)' : 'var(--neumorphic-shadow)', borderRadius: '16px', textShadow: snap ? '0px 0px 4px var(--foreground)' : '' }}>
+            <button onClick={toggleSnap} style={{ fontSize: '0.875em', color: snap ? 'hsla(var(--accent), 50%)' : 'var(--foreground-muted)', boxShadow: snap ? 'var(--neumorphic-shadow--active)' : 'var(--neumorphic-shadow)', borderRadius: '16px', textShadow: snap ? '0px 0px 4px hsl(var(--accent))' : '' }}>
                 Scroll snap
             </button>
         </div>
@@ -59,24 +60,14 @@ function DemoApp() {
     const isSmallView = useIsSmallViewport();
 
     return (
-        <main style={{ height: '100%', display: 'flex', gap: '8px', alignItems: 'center', position: 'relative', flexDirection: isSmallView ? 'column' : 'row' }}>
-            <article style={{ flex: 1, alignItems: 'start', textAlign: 'left', padding: '32px' }}>
-                <div style={{ maxWidth: '312px' }}>
+        <main className={isSmallView ? 'column' : ''}>
+            <article>
+                <div className="blurb">
                     <h1>
                         📜 React Parchment
                     </h1>
                     <p>
-                        Parchment is a simple React library for creating scrollable sections with visual feedback.
-                    </p>
-                    <p>
-                        It uses the
-                        {' '}
-                        <a target="_blank" href={INTERSECTION_OBSERVER}>IntersectionObserver API</a>
-                        {' '}
-                        to determine which section is currently in view and provides a simple API for scrolling to sections.
-                    </p>
-                    <p>
-                        This information is feed back to the `ParchmentButton` component, and available on the `useParchment` hook.
+                        Parchment is a simple React library for providing visual feedback for scrollable sections
                     </p>
                     <p>
                         Examples to come...
@@ -86,10 +77,10 @@ function DemoApp() {
             </article>
             <div style={{ flex: 1, height: '100%', overflow: 'hidden' }}>
                 <ParchmentProvider>
-                    <div style={{ height: '100%', display: 'flex', gap: '32px', alignItems: 'center', flexDirection: isSmallView ? 'column' : 'row' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', flexDirection: isSmallView ? 'row' : 'column', gap: '32px', margin: '32px' }}>
+                    <div className={`parchment-demo-wrapper ${isSmallView ? 'column' : ''}`}>
+                        <div className={`parchment-nav-wrapper ${!isSmallView ? 'column' : ''}`}>
                             <Controls snap={snap} toggleSnap={() => setSnap(prevSnap => !prevSnap)} />
-                            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: isSmallView ? 'row' : 'column' }}>
+                            <ul className={`parchment-nav ${!isSmallView && 'column'}`}>
                                 <ParchmentButton toSection="myFirstSection">
                                     {
                                         isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
@@ -107,14 +98,14 @@ function DemoApp() {
                                 </ParchmentButton>
                             </ul>
                         </div>
-                        <Parchment snap={snap} style={{ display: 'flex', flexGrow: 1, flexDirection: 'column', gap: '32px', padding: '32px 0' }}>
-                            <ParchmentSection id="myFirstSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '720px' }}>
+                        <Parchment snap={snap} className="parchment">
+                            <ParchmentSection id="myFirstSection" style={{ display: 'flex', alignItems: 'center' }}>
                                 <Section title="My first section" />
                             </ParchmentSection>
-                            <ParchmentSection id="mySecondSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '720px' }}>
+                            <ParchmentSection id="mySecondSection" style={{ display: 'flex', alignItems: 'center' }}>
                                 <Section title="My second section" />
                             </ParchmentSection>
-                            <ParchmentSection id="myThirdSection" style={{ margin: '8px', padding: '8px', borderRadius: '8px', border: '1px solid rgba(125, 125, 125, 0.5)', height: '720px' }}>
+                            <ParchmentSection id="myThirdSection" style={{ display: 'flex', alignItems: 'center' }}>
                                 <Section title="My third section" />
                             </ParchmentSection>
                         </Parchment>
