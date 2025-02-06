@@ -32,7 +32,7 @@ function Section({ title }: { title: string }) {
 function Controls({ snap, toggleSnap }: { snap: boolean; toggleSnap: () => void }) {
     return (
         <div>
-            <button onClick={toggleSnap} style={{ fontSize: '0.875em', color: snap ? 'hsla(var(--accent), 50%)' : 'var(--foreground-muted)', boxShadow: snap ? 'var(--neumorphic-shadow--active)' : 'var(--neumorphic-shadow)', borderRadius: '16px', textShadow: snap ? '0px 0px 4px hsl(var(--accent))' : '' }}>
+            <button onClick={toggleSnap} className={`toggle-button ${snap ? 'active' : ''}`}>
                 Scroll snap
             </button>
         </div>
@@ -75,43 +75,41 @@ function DemoApp() {
                     <a href={GITHUB_URL} target="_blank">Visit on Github</a>
                 </div>
             </article>
-            <div style={{ flex: 1, height: '100%', overflow: 'hidden' }}>
-                <ParchmentProvider>
-                    <div className={`parchment-demo-wrapper ${isSmallView ? 'column' : ''}`}>
-                        <div className={`parchment-nav-wrapper ${!isSmallView ? 'column' : ''}`}>
-                            <Controls snap={snap} toggleSnap={() => setSnap(prevSnap => !prevSnap)} />
-                            <ul className={`parchment-nav ${!isSmallView && 'column'}`}>
-                                <ParchmentButton toSection="myFirstSection">
-                                    {
-                                        isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
-                                    }
-                                </ParchmentButton>
-                                <ParchmentButton toSection="mySecondSection">
-                                    {
-                                        isActive => <MyNavButton isActive={isActive}>Second</MyNavButton>
-                                    }
-                                </ParchmentButton>
-                                <ParchmentButton toSection="myThirdSection">
-                                    {
-                                        isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
-                                    }
-                                </ParchmentButton>
-                            </ul>
-                        </div>
-                        <Parchment snap={snap} className="parchment">
-                            <ParchmentSection id="myFirstSection" style={{ display: 'flex', alignItems: 'center' }}>
-                                <Section title="My first section" />
-                            </ParchmentSection>
-                            <ParchmentSection id="mySecondSection" style={{ display: 'flex', alignItems: 'center' }}>
-                                <Section title="My second section" />
-                            </ParchmentSection>
-                            <ParchmentSection id="myThirdSection" style={{ display: 'flex', alignItems: 'center' }}>
-                                <Section title="My third section" />
-                            </ParchmentSection>
-                        </Parchment>
+            <ParchmentProvider>
+                <div className={`parchment-demo-wrapper ${isSmallView ? 'column size-full' : 'row flex-1'}`}>
+                    <div className={`parchment-nav-wrapper ${!isSmallView ? 'column' : 'row'}`}>
+                        <Controls snap={snap} toggleSnap={() => setSnap(prevSnap => !prevSnap)} />
+                        <ul className={`parchment-nav ${!isSmallView ? 'column' : 'row'}`}>
+                            <ParchmentButton toSection="myFirstSection">
+                                {
+                                    isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
+                                }
+                            </ParchmentButton>
+                            <ParchmentButton toSection="mySecondSection">
+                                {
+                                    isActive => <MyNavButton isActive={isActive}>Second</MyNavButton>
+                                }
+                            </ParchmentButton>
+                            <ParchmentButton toSection="myThirdSection">
+                                {
+                                    isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
+                                }
+                            </ParchmentButton>
+                        </ul>
                     </div>
-                </ParchmentProvider>
-            </div>
+                    <Parchment snap={snap} className="parchment">
+                        <ParchmentSection id="myFirstSection" style={{ display: 'flex', alignItems: 'center' }}>
+                            <Section title="My first section" />
+                        </ParchmentSection>
+                        <ParchmentSection id="mySecondSection" style={{ display: 'flex', alignItems: 'center' }}>
+                            <Section title="My second section" />
+                        </ParchmentSection>
+                        <ParchmentSection id="myThirdSection" style={{ display: 'flex', alignItems: 'center' }}>
+                            <Section title="My third section" />
+                        </ParchmentSection>
+                    </Parchment>
+                </div>
+            </ParchmentProvider>
         </main>
     );
 }

@@ -39,7 +39,6 @@ html {
 }
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
   flex-grow: 1;
@@ -77,6 +76,8 @@ main {
 }
 
 .blurb-container {
+    display: flex;
+    justify-content: center;
     flex: 1;
     align-items: start;
     text-align: left;
@@ -87,8 +88,16 @@ main {
     max-width: 312px;
 }
 
+.row {
+    flex-direction: row;
+}
+
 .column {
     flex-direction: column;
+}
+
+.size-full {
+    width: 100%;
 }
 
 .parchment-demo-wrapper {
@@ -96,13 +105,29 @@ main {
     display: flex;
     gap: var(--spacious);
     align-items: center;
-    flex-direction: row;
 }
+
+.toggle-button {
+    font-size: 0.75em;
+    color: var(--foreground-muted);
+    border-radius: var(--spacious);
+    box-shadow: var(--neumorphic-shadow);
+
+    &.active {
+        color: hsla(var(--accent), 50%);
+        box-shadow: var(--neumorphic-shadow--active);
+        text-shadow: 0 0 4px hsl(var(--accent));
+    }
+}
+
+.flex-1 {
+    flex: 1;
+}
+
 /*style={{ display: 'flex', alignItems: 'center', flexDirection: isSmallView ? 'row' : 'column', gap: 'var(--spacious)', margin: 'var(--spacious)' }}*/
 .parchment-nav-wrapper {
     display: flex;
     align-items: center;
-    flex-direction: column;
     gap: var(--spacious);
     margin: var(--spacious);
 }
@@ -119,7 +144,6 @@ main {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: row;
 }
 
 .section {
