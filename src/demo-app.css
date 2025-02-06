@@ -17,14 +17,15 @@
 
     --foreground: black;
     --foreground-muted: gray;
+    --foreground-subtle: 0, 0%, 25%;
     --background: #e7e7e7;
     --accent: 240, 50%, 50%;
 
     --neumorphic-shadow: 7px 7px 14px #c4c4c4, -7px -7px 14px #ffffff;
     --neumorphic-shadow--active:
-            inset 7px 7px 14px #c4c4c4, inset -7px -7px 14px #ffffff,
-            inset -6px -6px 12px -6px hsla(var(--accent), 50%)
-;
+        inset 7px 7px 14px #c4c4c4, inset -7px -7px 14px #ffffff,
+        inset -6px -6px 12px -6px hsla(var(--accent), 50%)
+    ;
 
     @media (prefers-color-scheme: dark) {
         --foreground: white;
@@ -92,6 +93,10 @@ main {
     flex-direction: row;
 }
 
+.row-reverse {
+    flex-direction: row-reverse;
+}
+
 .column {
     flex-direction: column;
 }
@@ -137,6 +142,9 @@ main {
     flex-grow: 1;
     flex-direction: column;
     gap: var(--spacious);
+    direction: rtl;
+    scrollbar-width: thin;
+    scrollbar-color: hsla(var(--foreground-subtle), 10%) hsla(var(--foreground-subtle), 2%);
 }
 
 .parchment-nav {

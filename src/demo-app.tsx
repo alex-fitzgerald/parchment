@@ -76,7 +76,7 @@ function DemoApp() {
                 </div>
             </article>
             <ParchmentProvider>
-                <div className={`parchment-demo-wrapper ${isSmallView ? 'column size-full' : 'row flex-1'}`}>
+                <div className={`parchment-demo-wrapper ${isSmallView ? 'column size-full' : 'row-reverse flex-1'}`}>
                     <div className={`parchment-nav-wrapper ${!isSmallView ? 'column' : 'row'}`}>
                         <Controls snap={snap} toggleSnap={() => setSnap(prevSnap => !prevSnap)} />
                         <ul className={`parchment-nav ${!isSmallView ? 'column' : 'row'}`}>
