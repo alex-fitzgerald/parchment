@@ -29,11 +29,23 @@ function Section({ title }: { title: string }) {
     );
 }
 
-function Controls({ snap, toggleSnap }: { snap: boolean; toggleSnap: () => void }) {
+interface ControlProps {
+    snap: boolean;
+    toggleSnap: () => void;
+    smoothScroll: boolean;
+    toggleSmoothScroll: () => void;
+}
+
+function Controls({ snap, toggleSnap, smoothScroll, toggleSmoothScroll }: ControlProps) {
+    const isSmallView = useIsSmallViewport();
+
     return (
-        <div>
+        <div className={`controls ${isSmallView ? 'gap-tight' : 'gap-spacious'}`}>
             <button onClick={toggleSnap} className={`toggle-button ${snap ? 'active' : ''}`}>
-                Scroll snap
+                Snap
+            </button>
+            <button onClick={toggleSmoothScroll} className={`toggle-button ${smoothScroll ? 'active' : ''}`}>
+                Smooth
             </button>
         </div>
     );
@@ -57,6 +69,7 @@ function useIsSmallViewport() {
 
 function DemoApp() {
     const [snap, setSnap] = useState(false);
+    const [smoothScroll, setSmoothScroll] = useState(false);
     const isSmallView = useIsSmallViewport();
 
     return (
@@ -78,7 +91,12 @@ function DemoApp() {
             <ParchmentProvider>
                 <div className={`parchment-demo-wrapper ${isSmallView ? 'column size-full' : 'row-reverse flex-1'}`}>
                     <div className={`parchment-nav-wrapper ${!isSmallView ? 'column' : 'row'}`}>
-                        <Controls snap={snap} toggleSnap={() => setSnap(prevSnap => !prevSnap)} />
+                        <Controls
+                            snap={snap}
+                            toggleSnap={() => setSnap(prevSnap => !prevSnap)}
+                            smoothScroll={smoothScroll}
+                            toggleSmoothScroll={() => setSmoothScroll(prevSmoothScroll => !prevSmoothScroll)}
+                        />
                         <ul className={`parchment-nav ${!isSmallView ? 'column' : 'row'}`}>
                             <ParchmentButton toSection="myFirstSection">
                                 {
@@ -97,17 +115,19 @@ function DemoApp() {
                             </ParchmentButton>
                         </ul>
                     </div>
-                    <Parchment snap={snap} className="parchment">
-                        <ParchmentSection id="myFirstSection" style={{ display: 'flex', alignItems: 'center' }}>
-                            <Section title="My first section" />
-                        </ParchmentSection>
-                        <ParchmentSection id="mySecondSection" style={{ display: 'flex', alignItems: 'center' }}>
-                            <Section title="My second section" />
-                        </ParchmentSection>
-                        <ParchmentSection id="myThirdSection" style={{ display: 'flex', alignItems: 'center' }}>
-                            <Section title="My third section" />
-                        </ParchmentSection>
-                    </Parchment>
+                    <div style={{ height: isSmallView ? '100%' : '80%', width: '100%' }}>
+                        <Parchment snap={snap} scrollIntoViewOptions={{ behavior: smoothScroll ? 'smooth' : 'instant' }} className={`parchment ${isSmallView ? 'height-80' : 'rtl'}`}>
+                            <ParchmentSection id="myFirstSection" style={{ display: 'flex', alignItems: 'center' }}>
+                                <Section title="My first section" />
+                            </ParchmentSection>
+                            <ParchmentSection id="mySecondSection" style={{ display: 'flex', alignItems: 'center' }}>
+                                <Section title="My second section" />
+                            </ParchmentSection>
+                            <ParchmentSection id="myThirdSection" style={{ display: 'flex', alignItems: 'center' }}>
+                                <Section title="My third section" />
+                            </ParchmentSection>
+                        </Parchment>
+                    </div>
                 </div>
             </ParchmentProvider>
         </main>

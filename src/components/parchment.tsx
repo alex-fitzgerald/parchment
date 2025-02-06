@@ -26,6 +26,8 @@ interface ParchmentProps {
     intersectionThreshold?: number;
     /**
      * Sets options for the `scrollIntoView` method, when a ParchmentButton is clicked.
+     *
+     * @default { behavior: 'smooth', block: 'center' }
      */
     scrollIntoViewOptions?: ScrollIntoViewOptions;
 }
@@ -38,7 +40,11 @@ export default function Parchment({
     intersectionThreshold,
     scrollIntoViewOptions,
 }: Readonly<ParchmentProps>) {
-    const { parchmentContainerRef, setIntersectionThreshold, setScrollIntoViewOptions } = useParchment();
+    const {
+        parchmentContainerRef,
+        setIntersectionThreshold,
+        setScrollIntoViewOptions,
+    } = useParchment();
 
     useLayoutEffect(() => {
         if (intersectionThreshold) {

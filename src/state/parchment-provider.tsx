@@ -10,7 +10,7 @@ import type {
     ParchmentSections,
 } from '../types';
 
-const DEFAULT_THRESHOLD = 0.25;
+const DEFAULT_THRESHOLD = 0.5;
 
 export default function ParchmentProvider({ children }: { children: ReactNode }) {
     const parchmentContainerRef = useRef<HTMLDivElement>(null);

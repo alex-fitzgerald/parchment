@@ -21,17 +21,17 @@
     --background: #e7e7e7;
     --accent: 240, 50%, 50%;
 
-    --neumorphic-shadow: 7px 7px 14px #c4c4c4, -7px -7px 14px #ffffff;
+    --neumorphic-shadow: 5px 5px 10px #c4c4c4, -5px -5px 10px #ffffff;
     --neumorphic-shadow--active:
-        inset 7px 7px 14px #c4c4c4, inset -7px -7px 14px #ffffff,
-        inset -6px -6px 12px -6px hsla(var(--accent), 50%)
+        inset 5px 5px 10px #c4c4c4, inset -5px -5px 10px #ffffff,
+        inset -4px -4px 8px -4px hsla(var(--accent), 50%)
     ;
 
     @media (prefers-color-scheme: dark) {
         --foreground: white;
         --background: #363636;
-        --neumorphic-shadow: 7px 7px 14px #2e2e2e, -7px -7px 14px #3e3e3e;
-        --neumorphic-shadow-inset: inset 7px 7px 14px #2e2e2e, inset -7px -7px 14px #3e3e3e;
+        --neumorphic-shadow: 5px 5px 10px #2e2e2e, -5px -5px 10px #3e3e3e;
+        --neumorphic-shadow-inset: inset 5px 7px 10px #2e2e2e, inset -5px -5px 10px #3e3e3e;
     }
 }
 
@@ -113,7 +113,8 @@ main {
 }
 
 .toggle-button {
-    font-size: 0.75em;
+    font-size: 0.66em;
+    letter-spacing: -0.2px;
     color: var(--foreground-muted);
     border-radius: var(--spacious);
     box-shadow: var(--neumorphic-shadow);
@@ -129,7 +130,6 @@ main {
     flex: 1;
 }
 
-/*style={{ display: 'flex', alignItems: 'center', flexDirection: isSmallView ? 'row' : 'column', gap: 'var(--spacious)', margin: 'var(--spacious)' }}*/
 .parchment-nav-wrapper {
     display: flex;
     align-items: center;
@@ -142,9 +142,12 @@ main {
     flex-grow: 1;
     flex-direction: column;
     gap: var(--spacious);
-    direction: rtl;
     scrollbar-width: thin;
     scrollbar-color: hsla(var(--foreground-subtle), 10%) hsla(var(--foreground-subtle), 2%);
+}
+
+.rtl {
+    direction: rtl;
 }
 
 .parchment-nav {
@@ -164,4 +167,18 @@ main {
     border: 1px solid rgba(125, 125, 125, 0.5);
     max-height: 720px;
     width: 100%;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gap-tight {
+    gap: var(--tight)
+}
+
+.gap-spacious {
+    gap: var(--spacious)
 }
