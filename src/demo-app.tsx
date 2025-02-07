@@ -112,7 +112,7 @@ function DemoApp() {
                         </ul>
                     </div>
                 </article>
-                <div className={`parchment-demo-wrapper ${isSmallView ? 'column size-full' : 'row-reverse flex-1'}`}>
+                <div className={`parchment-demo-wrapper ${isSmallView ? 'column' : 'row-reverse flex-1'}`}>
                     <div style={{ height: isSmallView ? '100%' : '80%', width: '100%' }}>
                         <Parchment snap={snap} scrollIntoViewOptions={{ behavior: smoothScroll ? 'smooth' : 'instant' }} className={`parchment ${isSmallView ? 'height-80' : ''}`}>
                             <ParchmentSection id="myFirstSection" style={{ display: 'flex', alignItems: 'center' }}>

@@ -111,6 +111,7 @@ main {
     display: flex;
     align-items: center;
     overflow: hidden;
+    padding: 32px;
 }
 
 .toggle-button {
