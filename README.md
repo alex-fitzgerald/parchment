@@ -172,6 +172,9 @@ function MyComponent() {
 #### ScrollOptions
 `Parchment` accepts the global [`ScrollIntoViewOptions`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#scrollintoviewoptions) object as a `prop`.
 
+## Contributions
+Feel free to contribute. Has the default vite scripts, so to get up and running after cloning just run `npm run dev`.
+
 ## TODO:
 - [ ] Add tests
 - [ ] Add more features
