@@ -13,6 +13,8 @@ Parchment is a simple wee handful of headless components to help compose scrolla
 npm install parchment
 ```
 
+Done. No dependencies outside of `react` and `react-dom`.
+
 ## Usage
 We're using React Context under the hood, so you'll need to wrap any parchment fellas with the `ParchmentProvider`.
 
