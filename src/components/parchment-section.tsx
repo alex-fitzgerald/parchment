@@ -10,12 +10,12 @@ import useParchment from '../hooks/use-parchment';
 
 interface ParchmentSectionProps {
     children: ReactNode;
-    id: ParchmentSectionKey;
+    section: ParchmentSectionKey;
     className?: string;
     style?: CSSProperties;
 }
 
-export default function ParchmentSection({ children, id, className, style }: Readonly<ParchmentSectionProps>) {
+export default function ParchmentSection({ children, section, className, style }: Readonly<ParchmentSectionProps>) {
     const { addParchmentSection, parchmentSections, removeParchmentSection, setInView } = useParchment();
     const parchmentSectionRef = useRef(null);
     observerIntersection(parchmentSectionRef.current, setInView);
@@ -26,16 +26,16 @@ export default function ParchmentSection({ children, id, className, style }: Rea
      * This allows for it to be easily accessed by other components.
      */
     useLayoutEffect(() => {
-        if (parchmentSectionRef.current && !parchmentSections?.[id]) {
-            addParchmentSection?.(id, parchmentSectionRef);
+        if (parchmentSectionRef.current && !parchmentSections?.[section]) {
+            addParchmentSection?.(section, parchmentSectionRef);
         }
 
-        return () => removeParchmentSection?.(id);
-    }, [addParchmentSection, id, parchmentSectionRef]);
+        return () => removeParchmentSection?.(section);
+    }, [addParchmentSection, section, parchmentSectionRef]);
 
     return (
         <section
-            id={id}
+            id={section}
             ref={parchmentSectionRef}
             style={{
                 scrollSnapAlign: 'center',

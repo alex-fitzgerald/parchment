@@ -1,6 +1,6 @@
 # 📜 Parchment
 
-Parchment is a simple headless library for element scroll with visible feedback, using the IntersectionObserver API.
+Parchment is a simple handful of headless components for element scroll with visible feedback, using the IntersectionObserver API.
 
 
 ## Buttons
@@ -28,8 +28,12 @@ function MyButton() {
 }
 ```
 
-### active prop
+### active argument
 ```jsx
+/**
+ * If the `ParchmentButton` child is a function, it is called
+ * with a boolean reflecting whether the section is in view.
+ */
 function MyButton() {
   return (
     <ParchmentButton section={mySectionKey}>

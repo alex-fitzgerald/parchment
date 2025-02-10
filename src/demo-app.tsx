@@ -3,7 +3,7 @@ import Parchment from './components/parchment';
 import {
     useEffect,
     useState,
-    type ReactNode,
+    type ReactNode, useLayoutEffect,
 } from 'react';
 import ParchmentSection from './components/parchment-section';
 import ParchmentButton from './components/parchment-button';
@@ -34,17 +34,25 @@ interface ControlProps {
     toggleSnap: () => void;
     smoothScroll: boolean;
     toggleSmoothScroll: () => void;
+    darkMode: boolean;
+    toggleDarkMode: () => void;
 }
 
-function Controls({ snap, toggleSnap, smoothScroll, toggleSmoothScroll }: ControlProps) {
+function Controls({ snap, toggleSnap, smoothScroll, toggleSmoothScroll, darkMode, toggleDarkMode }: ControlProps) {
     return (
-        <div className="controls gap-tight">
-            <button onClick={toggleSnap} className={`toggle-button ${snap ? 'active' : ''}`}>
-                Snap
-            </button>
-            <button onClick={toggleSmoothScroll} className={`toggle-button ${smoothScroll ? 'active' : ''}`}>
-                Smooth
-            </button>
+        <div className="controls gap-spacious">
+            <div className={`${snap ? 'active' : ''} toggle-button-field`}>
+                <label htmlFor="toggle-snap" onClick={toggleSnap}>Snap to section</label>
+                <button name="toggle-snap" onClick={toggleSnap} />
+            </div>
+            <div className={`${smoothScroll ? 'active' : ''} toggle-button-field`}>
+                <label htmlFor="toggle-smooth" onClick={toggleSmoothScroll}>Smooth scrolling</label>
+                <button name="toggle-smooth" onClick={toggleSmoothScroll} />
+            </div>
+            <div className={`${darkMode ? 'active' : ''} toggle-button-field`}>
+                <label htmlFor="toggle-smooth" onClick={toggleDarkMode}>Dark mode</label>
+                <button name="toggle-smooth" onClick={toggleDarkMode} />
+            </div>
         </div>
     );
 }
@@ -65,10 +73,29 @@ function useIsSmallViewport() {
     return isSmallViewport;
 }
 
+const toggleDarkMode = () => {
+    document.documentElement.classList.toggle('dark-mode');
+};
+
 function DemoApp() {
     const [snap, setSnap] = useState(false);
     const [smoothScroll, setSmoothScroll] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
     const isSmallView = useIsSmallViewport();
+
+    useLayoutEffect(() => {
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+
+        if (prefersDarkMode.matches) {
+            setIsDarkMode(true);
+            document.documentElement.classList.add('dark-mode');
+        }
+    }, []);
+
+    const handleToggleDarkMode = () => {
+        toggleDarkMode();
+        setIsDarkMode(prevDarkMode => !prevDarkMode);
+    };
 
     return (
         <ParchmentProvider>
@@ -92,8 +119,10 @@ function DemoApp() {
                             toggleSnap={() => setSnap(prevSnap => !prevSnap)}
                             smoothScroll={smoothScroll}
                             toggleSmoothScroll={() => setSmoothScroll(prevSmoothScroll => !prevSmoothScroll)}
+                            darkMode={isDarkMode}
+                            toggleDarkMode={handleToggleDarkMode}
                         />
-                        <ul className="parchment-nav row">
+                        <div className="parchment-nav row sections">
                             <ParchmentButton section="myFirstSection">
                                 {
                                     isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
@@ -107,19 +136,19 @@ function DemoApp() {
                                     isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
                                 }
                             </ParchmentButton>
-                        </ul>
+                        </div>
                     </div>
                 </article>
                 <div className={`parchment-demo-wrapper ${isSmallView ? 'column' : 'row-reverse flex-1'}`}>
-                    <div style={{ height: isSmallView ? '100%' : '80%', width: '100%' }}>
+                    <div style={{ height: '100%', width: '100%' }}>
                         <Parchment snap={snap} scrollIntoViewOptions={{ behavior: smoothScroll ? 'smooth' : 'instant' }} className={`parchment ${isSmallView ? 'height-80' : ''}`}>
-                            <ParchmentSection id="myFirstSection" style={{ display: 'flex', alignItems: 'center' }}>
+                            <ParchmentSection section="myFirstSection" style={{ display: 'flex', alignItems: 'center' }}>
                                 <Section title="My first section" />
                             </ParchmentSection>
-                            <ParchmentSection id="mySecondSection" style={{ display: 'flex', alignItems: 'center' }}>
+                            <ParchmentSection section="mySecondSection" style={{ display: 'flex', alignItems: 'center' }}>
                                 <Section title="My second section" />
                             </ParchmentSection>
-                            <ParchmentSection id="myThirdSection" style={{ display: 'flex', alignItems: 'center' }}>
+                            <ParchmentSection section="myThirdSection" style={{ display: 'flex', alignItems: 'center' }}>
                                 <Section title="My third section" />
                             </ParchmentSection>
                         </Parchment>
