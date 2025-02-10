@@ -3,21 +3,13 @@ import Parchment from './components/parchment';
 import {
     useEffect,
     useState,
-    type ReactNode, useLayoutEffect,
+    useLayoutEffect,
 } from 'react';
 import ParchmentSection from './components/parchment-section';
 import ParchmentButton from './components/parchment-button';
 import ParchmentProvider from './state/parchment-provider';
 
 const GITHUB_URL = 'https://github.com/alex-fitzgerald/parchment';
-
-function MyNavButton({ isActive, children }: { isActive?: boolean; children: ReactNode }) {
-    return (
-        <span style={{ color: isActive ? 'hsla(var(--accent), 50%)' : 'var(--foreground)' }}>
-            {children}
-        </span>
-    );
-}
 
 function Section({ title }: { title: string }) {
     return (
@@ -124,17 +116,13 @@ function DemoApp() {
                         />
                         <div className="parchment-nav row">
                             <ParchmentButton section="myFirstSection">
-                                {
-                                    isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
-                                }
+                                First
                             </ParchmentButton>
                             <ParchmentButton section="mySecondSection">
                                 Second
                             </ParchmentButton>
                             <ParchmentButton section="myThirdSection">
-                                {
-                                    isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
-                                }
+                                Third
                             </ParchmentButton>
                         </div>
                     </div>
