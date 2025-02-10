@@ -1,4 +1,7 @@
 # 📜 Parchment
+I love little scrollspies, particularly `notion's`.
+
+While they're simple as anything, I wanted to make my own.
 
 Parchment is a simple handful of headless components for element scroll with visible feedback, using the IntersectionObserver API.
 
