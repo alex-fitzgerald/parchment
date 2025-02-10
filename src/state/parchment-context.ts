@@ -7,8 +7,8 @@ import type {
 
 interface ParchmentContext {
     parchmentContainerRef: RefObject<HTMLDivElement>;
-    currentParchmentSectionKey?: ParchmentSectionKey | null;
-    setCurrentParchmentSection: (currentParchmentSection: ParchmentSectionKey) => void;
+    inView?: ParchmentSectionKey | null;
+    setInView: (currentParchmentSection: ParchmentSectionKey) => void;
 
     parchmentSections?: ParchmentSections;
     addParchmentSection: (parchmentSectionKey: ParchmentSectionKey, parchmentSection: ParchmentSectionRef) => void;

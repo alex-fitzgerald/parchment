@@ -13,31 +13,32 @@ interface ButtonProps {
     /**
      * The parchment section to scroll to when the link is clicked.
      */
-    toSection: ParchmentSectionKey;
+    section: ParchmentSectionKey;
 }
 
-export default function Button({ children, toSection }: ButtonProps) {
-    const { currentParchmentSectionKey, parchmentSections, scrollTo } = useParchment();
+export default function Button({ children, section }: ButtonProps) {
+    const { inView, parchmentSections, scrollTo } = useParchment();
     const childIsFunction = typeof children === 'function';
+    const active = section === inView;
 
-    if (!toSection || !parchmentSections || !parchmentSections[toSection]) {
+    if (!section || !parchmentSections || !parchmentSections[section]) {
         return childIsFunction ? children() : children;
     }
 
     function handleClick() {
-        scrollTo(toSection);
+        scrollTo(section);
     }
 
     if (childIsFunction) {
         return (
             <button onClick={handleClick}>
-                { children(toSection === currentParchmentSectionKey) }
+                { children(active) }
             </button>
         );
     }
 
     return (
-        <button onClick={handleClick}>
+        <button onClick={handleClick} className={`parchment-button ${active ? 'active' : ''}`}>
             {children}
         </button>
     );

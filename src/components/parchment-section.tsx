@@ -16,9 +16,9 @@ interface ParchmentSectionProps {
 }
 
 export default function ParchmentSection({ children, id, className, style }: Readonly<ParchmentSectionProps>) {
-    const { addParchmentSection, parchmentSections, removeParchmentSection, setCurrentParchmentSection } = useParchment();
+    const { addParchmentSection, parchmentSections, removeParchmentSection, setInView } = useParchment();
     const parchmentSectionRef = useRef(null);
-    observerIntersection(parchmentSectionRef.current, setCurrentParchmentSection);
+    observerIntersection(parchmentSectionRef.current, setInView);
 
     /**
      * On render, add the parchment section ref to state.

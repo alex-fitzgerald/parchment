@@ -94,17 +94,15 @@ function DemoApp() {
                             toggleSmoothScroll={() => setSmoothScroll(prevSmoothScroll => !prevSmoothScroll)}
                         />
                         <ul className="parchment-nav row">
-                            <ParchmentButton toSection="myFirstSection">
+                            <ParchmentButton section="myFirstSection">
                                 {
                                     isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
                                 }
                             </ParchmentButton>
-                            <ParchmentButton toSection="mySecondSection">
-                                {
-                                    isActive => <MyNavButton isActive={isActive}>Second</MyNavButton>
-                                }
+                            <ParchmentButton section="mySecondSection">
+                                Second
                             </ParchmentButton>
-                            <ParchmentButton toSection="myThirdSection">
+                            <ParchmentButton section="myThirdSection">
                                 {
                                     isActive => <MyNavButton isActive={isActive}>Third</MyNavButton>
                                 }

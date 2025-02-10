@@ -15,7 +15,7 @@ const DEFAULT_THRESHOLD = 0.5;
 export default function ParchmentProvider({ children }: { children: ReactNode }) {
     const parchmentContainerRef = useRef<HTMLDivElement>(null);
     const [parchmentSections, setParchmentSections] = useState<ParchmentSections>({});
-    const [currentParchmentSectionKey, setCurrentParchmentSection] = useState<ParchmentSectionKey | null>(null);
+    const [inView, setInView] = useState<ParchmentSectionKey | null>(null);
     const [intersectionThreshold, setIntersectionThreshold] = useState(DEFAULT_THRESHOLD);
     const [scrollIntoViewOptions, setScrollIntoViewOpts] = useState<ScrollIntoViewOptions>({
         behavior: 'smooth',
@@ -56,8 +56,8 @@ export default function ParchmentProvider({ children }: { children: ReactNode })
     const value = {
         parchmentContainerRef,
 
-        currentParchmentSectionKey,
-        setCurrentParchmentSection,
+        inView,
+        setInView,
 
         parchmentSections,
         addParchmentSection,

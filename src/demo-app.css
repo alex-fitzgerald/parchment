@@ -181,3 +181,7 @@ main {
 .gap-spacious {
     gap: var(--spacious)
 }
+
+.parchment-button.active {
+    color: hsla(var(--accent), 50%);
+}
