@@ -4,16 +4,14 @@ I love little scrollspies, particularly `notion's`. While they're simple as anyt
 
 <img src="https://github.com/user-attachments/assets/b2ad4bbe-835e-4ea2-aac4-81d29b445158" width="150px" />
 
-Parchment is a simple wee handful of headless components to help compose scrollable sections with visual indicators.
+Parchment is a simple wee handful of headless components to help compose scrollable sections with visual indicators. No dependencies other than the usual `react`
 
-<small>Get it? Scrollable? Parchment? 🤓</small>
+<small>_Scroll_able... Parchment... 📜</small>
 
 ## Installation
 ```bash
 npm install parchment
 ```
-
-No dependencies other than `react` and `react-dom`.
 
 ## Usage
 We're using React Context under the hood, so you'll need to wrap any parchment fellas with the `ParchmentProvider`.
