@@ -49,8 +49,6 @@ function MyScrollableSections() {
 Parchment buttons are wired up to know when their associated section is in view. An 'active' class is
 applied to the button, or passed as a boolean argument to a function.
 
-You can use their active state in two ways:
-
 ### .active class
 ```jsx
 import ParchmentButton from 'parchment';
@@ -77,7 +75,7 @@ function MyButton() {
  */
 function MyButton() {
   return (
-    <ParchmentButton section={mySectionKey}>
+    <ParchmentButton section="my-section">
         {(active) => (
             <div style={{ color: active ? 'rebeccapurple' : 'blue' }}>
                 My Section Name
@@ -145,4 +143,6 @@ function MyComponent() {
 - [ ] Add more documentation
 - [ ] Add more features
 - [ ] Add horizontal/vertical option
-```
+- [ ] Add `asChild` prop to `ParchmentButton` to allow for custom components
+- [ ] Add `threshold` prop to `ParchmentButton` to allow for custom scroll thresholds
+- [ ] Add `percentInView` option?
