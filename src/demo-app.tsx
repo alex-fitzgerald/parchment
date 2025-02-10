@@ -122,7 +122,7 @@ function DemoApp() {
                             darkMode={isDarkMode}
                             toggleDarkMode={handleToggleDarkMode}
                         />
-                        <div className="parchment-nav row sections">
+                        <div className="parchment-nav row">
                             <ParchmentButton section="myFirstSection">
                                 {
                                     isActive => <MyNavButton isActive={isActive}>First</MyNavButton>
