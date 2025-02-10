@@ -28,6 +28,41 @@ return (
 );
 ```
 
+## Parchment
+The scroll, which will have sections that can be scrolled to. Can accept any `ReactNode` children.
+
+```tsx
+import { Parchment } from 'parchment';
+
+interface ParchmentOptions {
+    /**
+     * Sets the intersection threshold for all parchment sections.
+     *
+     * @default 0.5
+     */
+    intersectionThreshold?: number;
+    /**
+     * Sets options for the `scrollIntoView` method, when a ParchmentButton is clicked.
+     *
+     * @default { behavior: 'smooth', block: 'center' }
+     */
+    scrollIntoViewOptions?: ScrollIntoViewOptions;
+    /**
+     * Whether to enable scroll-snapping on the parchment container.
+     *
+     * @default false
+     */
+    snap?: boolean;
+}
+
+return (
+    <Parchment snap={true} scrollIntoViewOptions={{ block: 'start' }} intersectionThreshold={0.3}>
+        {...sections}
+    </Parchment>
+)
+
+```
+
 ## Sections
 Any 'scrollable' sections should be wrapped in a `ParchmentSection` component. This will register the section with the context.
 
