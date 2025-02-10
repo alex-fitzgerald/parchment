@@ -1,14 +1,8 @@
 # 📜 Parchment
-<table>
-  <tr>
-    <td>
-      I love little scrollspies, particularly `notion's`.
 
-      While they're simple as anything, I wanted to make my own.
-    </td>
-    <td>![scrollspy](https://github.com/user-attachments/assets/b2ad4bbe-835e-4ea2-aac4-81d29b445158)</td>
-  </tr>
-</table>
+I love little scrollspies, particularly `notion's`. While they're simple as anything, I wanted to make my own.
+
+<img src="https://github.com/user-attachments/assets/b2ad4bbe-835e-4ea2-aac4-81d29b445158" width="150px" />
 
 
 Parchment is a simple handful of headless components for element scroll with visible feedback, using the IntersectionObserver API.
