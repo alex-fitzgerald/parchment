@@ -138,3 +138,11 @@ function MyComponent() {
 
 #### ScrollOptions
 `Parchment` accepts the global [`ScrollIntoViewOptions`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#scrollintoviewoptions) object as a `prop`.
+
+## TODO:
+- [ ] Add tests
+- [ ] Add more examples
+- [ ] Add more documentation
+- [ ] Add more features
+- [ ] Add horizontal/vertical option
+```
