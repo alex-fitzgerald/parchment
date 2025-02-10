@@ -31,6 +31,8 @@
 
 html {
     height: 100%;
+    max-height: 100dvh;
+    overflow: hidden;
 
     &.dark-mode {
         --accent: 120, 75%, 75%;
@@ -47,6 +49,8 @@ html {
   text-align: center;
   flex-grow: 1;
   height: 100%;
+  max-height: 100%;
+  padding: var(--spacious);
 }
 
 body {
@@ -55,6 +59,7 @@ body {
     place-items: center;
     min-width: 320px;
     height: 100%;
+    max-height: 100%;
     color: var(--foreground);
     font-family: "Geist", serif;
     font-optical-sizing: auto;
@@ -80,16 +85,14 @@ main {
     flex-direction: row;
     height: 100%;
     position: relative;
+    gap: var(--spacious);
 }
 
 .blurb-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    flex: 1;
     align-items: center;
     text-align: left;
-    padding: var(--spacious);
     gap: var(--spacious);
 }
 
@@ -115,11 +118,11 @@ main {
 
 .parchment-demo-wrapper {
     height: 100%;
-    max-height: 90%;
+    max-height: 360px;
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding: 32px;
+    flex: 1;
 }
 
 .toggle-button-field {

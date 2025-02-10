@@ -100,7 +100,7 @@ function DemoApp() {
     return (
         <ParchmentProvider>
             <main className={isSmallView ? 'column' : ''}>
-                <article className="blurb-container">
+                <article className={`blurb-container ${isSmallView ? '' : 'flex-1'}`}>
                     <div className="blurb">
                         <h1>
                             📜 React Parchment
@@ -139,9 +139,9 @@ function DemoApp() {
                         </div>
                     </div>
                 </article>
-                <div className={`parchment-demo-wrapper ${isSmallView ? 'column' : 'row-reverse flex-1'}`}>
+                <div className={`parchment-demo-wrapper ${isSmallView ? 'column size-full' : 'row-reverse flex-1'}`}>
                     <div style={{ height: '100%', width: '100%' }}>
-                        <Parchment snap={snap} scrollIntoViewOptions={{ behavior: smoothScroll ? 'smooth' : 'instant' }} className={`parchment ${isSmallView ? 'height-80' : ''}`}>
+                        <Parchment snap={snap} scrollIntoViewOptions={{ behavior: smoothScroll ? 'smooth' : 'instant' }} className="parchment">
                             <ParchmentSection section="myFirstSection" style={{ display: 'flex', alignItems: 'center' }}>
                                 <Section title="My first section" />
                             </ParchmentSection>
