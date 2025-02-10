@@ -26,7 +26,7 @@ export interface ParchmentOptions {
     snap?: boolean;
 }
 
-interface ParchmentProps extends ParchmentOptions{
+interface ParchmentProps extends ParchmentOptions {
     /**
      * Accepts any children. Only `ParchmentSections` will
      * be observed by the IntersectionObserver.
