@@ -182,3 +182,4 @@ Feel free to contribute. Has the default vite scripts, so to get up and running 
 - [ ] Add `asChild` prop to `ParchmentButton` to allow for custom components
 - [ ] Add `threshold` prop to `ParchmentButton` to allow for custom scroll thresholds
 - [ ] Add `percentInView` option?
+- [ ] Review from performance perspective - what needs to be memoised?
