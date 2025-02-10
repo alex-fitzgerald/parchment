@@ -5,23 +5,11 @@ import {
 } from 'react';
 import useParchment from '../hooks/use-parchment';
 
-interface ParchmentProps {
-    /**
-     * Accepts any children. Only `ParchmentSections` will
-     * be observed by the IntersectionObserver, but all
-     * children are valid.
-     */
-    children: ReactNode;
-    /**
-     * Whether to enable scroll-snapping on the parchment container.
-     */
-    snap?: boolean;
-    className?: string;
-    style?: CSSProperties;
+export interface ParchmentOptions {
     /**
      * Sets the intersection threshold for all parchment sections.
      *
-     * If a section has its own threshold specified, that will take precedence.
+     * @default 0.5
      */
     intersectionThreshold?: number;
     /**
@@ -30,6 +18,22 @@ interface ParchmentProps {
      * @default { behavior: 'smooth', block: 'center' }
      */
     scrollIntoViewOptions?: ScrollIntoViewOptions;
+    /**
+     * Whether to enable scroll-snapping on the parchment container.
+     *
+     * @default false
+     */
+    snap?: boolean;
+}
+
+interface ParchmentProps extends ParchmentOptions{
+    /**
+     * Accepts any children. Only `ParchmentSections` will
+     * be observed by the IntersectionObserver.
+     */
+    children: ReactNode;
+    className?: string;
+    style?: CSSProperties;
 }
 
 export default function Parchment({
