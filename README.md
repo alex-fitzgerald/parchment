@@ -139,8 +139,6 @@ function MyComponent() {
 
 ## TODO:
 - [ ] Add tests
-- [ ] Add more examples
-- [ ] Add more documentation
 - [ ] Add more features
 - [ ] Add horizontal/vertical option
 - [ ] Add `asChild` prop to `ParchmentButton` to allow for custom components
