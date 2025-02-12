@@ -6,6 +6,8 @@
     --tight: 8px;
     --spacious: 32px;
 
+    --container-size: 256px;
+
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
@@ -95,10 +97,16 @@ main {
     align-items: center;
     text-align: left;
     gap: var(--spacious);
+
+    article {
+        width: var(--container-size);
+        height: var(--container-size);
+    }
 }
 
 .blurb {
-    max-width: 320px;
+    width: var(--container-size);
+    text-align: start;
 }
 
 .row {
@@ -126,8 +134,8 @@ main {
     justify-content: center;
 
     > div {
-        max-height: 256px;
-        max-width: 256px;
+        max-height: var(--container-size);
+        max-width: var(--container-size);
         display: flex;
         gap: var(--tight);
     }
@@ -215,7 +223,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: start;
-    padding: var(--spacious);
+    padding: var(--tight);
     border-radius: var(--tight);
     border: 1px solid hsla(var(--foreground-subtle), 5%);
 }
@@ -261,7 +269,7 @@ footer {
 
     div {
         display: flex;
-        gap: var(--tight);
+        gap: var(--spacious);
         align-items: center;
     }
 }

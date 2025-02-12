@@ -32,7 +32,7 @@ interface ControlProps {
 
 function Controls({ snap, toggleSnap, smoothScroll, toggleSmoothScroll }: ControlProps) {
     return (
-        <div className="controls gap-spacious">
+        <div className="controls gap-tight">
             <div className={`${snap ? 'active' : ''} toggle-button-field`}>
                 <label htmlFor="toggle-snap" onClick={toggleSnap}>Snap to section</label>
                 <button name="toggle-snap" onClick={toggleSnap} />
@@ -89,25 +89,27 @@ function DemoApp() {
         <>
             <ParchmentProvider>
                 <main className={isSmallView ? 'column' : ''}>
-                    <article className={`blurb-container ${isSmallView ? '' : 'flex-1'}`}>
-                        <div className="blurb">
-                            <h1>
-                                📜 React Parchment
-                            </h1>
-                            <p>
-                                Parchment is a simple React library for providing visual feedback for scrollable sections.
-                            </p>
-                        </div>
-                        <div className="parchment-nav-wrapper row">
-                            <Controls
-                                snap={snap}
-                                toggleSnap={() => setSnap(prevSnap => !prevSnap)}
-                                smoothScroll={smoothScroll}
-                                toggleSmoothScroll={() => setSmoothScroll(prevSmoothScroll => !prevSmoothScroll)}
-                            />
-                        </div>
-                    </article>
-                    <div className={`parchment-demo-wrapper ${isSmallView ? 'column size-full' : 'row-reverse flex-1'}`}>
+                    <div style={{ display: 'flex', justifyContent: 'end', alignItems: 'end' }} className="flex-1">
+                        <article>
+                            <div className="blurb">
+                                <h1>
+                                    📜 React Parchment
+                                </h1>
+                                <p>
+                                    Parchment is a simple React library for providing visual feedback for scrollable sections.
+                                </p>
+                            </div>
+                            <div className="parchment-nav-wrapper row">
+                                <Controls
+                                    snap={snap}
+                                    toggleSnap={() => setSnap(prevSnap => !prevSnap)}
+                                    smoothScroll={smoothScroll}
+                                    toggleSmoothScroll={() => setSmoothScroll(prevSmoothScroll => !prevSmoothScroll)}
+                                />
+                            </div>
+                        </article>
+                    </div>
+                    <div style={{ justifyContent: 'start' }} className={`parchment-demo-wrapper ${isSmallView ? 'column size-full' : 'row-reverse flex-1'}`}>
                         <div style={{ height: '100%', width: '100%' }}>
                             <div className="parchment-nav row">
                                 <ParchmentButton section="myFirstSection">
