@@ -1,12 +1,12 @@
 {
-  "name": "parchment",
+  "name": "@fitz/parchment",
   "private": false,
   "license": "MIT",
   "version": "0.0.1",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alex-fitzgerald/parchment.git"
+    "url": "https://github.com/alex-fitzgerald/parchment.git"
   },
   "scripts": {
     "dev": "vite",
