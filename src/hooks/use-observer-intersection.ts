@@ -8,7 +8,7 @@ import useParchment from './use-parchment';
  * update the `currentParchmentSection` accordingly.
  */
 type ParchmentIntersectionCallback = (id: string) => void;
-export default function observerIntersection(parchmentSectionElement: ParchmentSectionRef['current'], callback: ParchmentIntersectionCallback) {
+export default function useObserverIntersection(parchmentSectionElement: ParchmentSectionRef['current'], callback: ParchmentIntersectionCallback) {
     const { parchmentSections, parchmentContainerRef, intersectionThreshold } = useParchment();
 
     useEffect(() => {

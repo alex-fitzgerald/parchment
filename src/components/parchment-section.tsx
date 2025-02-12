@@ -4,7 +4,7 @@ import {
     useLayoutEffect,
     useRef,
 } from 'react';
-import observerIntersection from '../hooks/observer-intersection.ts';
+import useObserverIntersection from '../hooks/use-observer-intersection.ts';
 import { type ParchmentSectionKey } from '../types';
 import useParchment from '../hooks/use-parchment';
 
@@ -18,7 +18,7 @@ interface ParchmentSectionProps {
 export default function ParchmentSection({ children, section, className, style }: Readonly<ParchmentSectionProps>) {
     const { addParchmentSection, parchmentSections, removeParchmentSection, setInView } = useParchment();
     const parchmentSectionRef = useRef(null);
-    observerIntersection(parchmentSectionRef.current, setInView);
+    useObserverIntersection(parchmentSectionRef.current, setInView);
 
     /**
      * On render, add the parchment section ref to state.
