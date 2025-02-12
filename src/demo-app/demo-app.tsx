@@ -65,10 +65,22 @@ const toggleDarkMode = () => {
     document.documentElement.classList.toggle('dark-mode');
 };
 
+const demoSections = [
+    'First',
+    'Second',
+    'Third',
+    'Fourth',
+    'Fifth',
+    'Sixth',
+    'Seventh',
+    'Etcetera',
+];
+
 function DemoApp() {
     const [snap, setSnap] = useState(false);
     const [smoothScroll, setSmoothScroll] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
+    // const [demoSections] = useState();
     const isSmallView = useIsSmallViewport();
 
     useLayoutEffect(() => {
@@ -112,39 +124,30 @@ function DemoApp() {
                     <div style={{ justifyContent: 'start' }} className={`parchment-demo-wrapper ${isSmallView ? 'column size-full' : 'row-reverse flex-1'}`}>
                         <div style={{ height: '100%', width: '100%' }}>
                             <div className="parchment-nav row">
-                                <ParchmentButton section="myFirstSection">
-                                    First
-                                </ParchmentButton>
-                                <ParchmentButton section="mySecondSection">
-                                    Second
-                                </ParchmentButton>
-                                <ParchmentButton section="myThirdSection">
-                                    Third
-                                </ParchmentButton>
+                                {
+                                    demoSections.map(section => (
+                                        <ParchmentButton section={section} key={section}>
+                                            {section}
+                                        </ParchmentButton>
+                                    ))
+                                }
                             </div>
                             <Parchment
                                 snap={snap}
                                 scrollIntoViewOptions={{ behavior: smoothScroll ? 'smooth' : 'instant' }}
                                 className="parchment"
                             >
-                                <ParchmentSection
-                                    section="myFirstSection"
-                                    style={{ display: 'flex', alignItems: 'center' }}
-                                >
-                                    <Section title="My first section" />
-                                </ParchmentSection>
-                                <ParchmentSection
-                                    section="mySecondSection"
-                                    style={{ display: 'flex', alignItems: 'center' }}
-                                >
-                                    <Section title="My second section" />
-                                </ParchmentSection>
-                                <ParchmentSection
-                                    section="myThirdSection"
-                                    style={{ display: 'flex', alignItems: 'center' }}
-                                >
-                                    <Section title="My third section" />
-                                </ParchmentSection>
+                                {
+                                    demoSections.map(section => (
+                                        <ParchmentSection
+                                            section={section}
+                                            key={section}
+                                            style={{ display: 'flex', alignItems: 'center' }}
+                                        >
+                                            <Section title={section} />
+                                        </ParchmentSection>
+                                    ))
+                                }
                             </Parchment>
                         </div>
                     </div>

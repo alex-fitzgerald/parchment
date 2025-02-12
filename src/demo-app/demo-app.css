@@ -21,7 +21,7 @@
     --foreground-muted: gray;
     --foreground-subtle: 0, 0%, 25%;
     --background: #e7e7e7;
-    --accent: 187, 50%, 50%;
+    --accent: 120, 75%, 50%;
 
     --neumorphic-shadow: 5px 5px 10px #c4c4c4, -5px -5px 10px #ffffff;
     --neumorphic-shadow--active:
@@ -36,7 +36,7 @@ html {
     max-height: 100dvh;
 
     &.dark-mode {
-        --accent: 187, 100%, 75%;
+        --accent: 120, 100%, 75%;
         --foreground-subtle: 0, 0%, 75%;
         --foreground: white;
         --background: #363636;
@@ -161,10 +161,6 @@ main {
     }
 
     &.active {
-        label {
-            color: hsla(var(--accent), 50%);
-        }
-
         button {
             box-shadow: var(--neumorphic-shadow--active);
         }
@@ -237,9 +233,14 @@ main {
     gap: var(--spacious)
 }
 
-.parchment-button.active {
-    color: hsla(var(--accent), 50%);
+.parchment-button {
+    opacity: 0.25;
+
+    &.active {
+        opacity: 1;
+    }
 }
+
 
 footer {
     display: flex;
