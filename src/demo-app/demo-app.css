@@ -252,6 +252,10 @@ footer {
     a {
         display: flex;
         align-items: center;
+        color: var(--foreground);
+        text-decoration: none;
+        gap: var(--tight);
+        font-size: 0.675rem;
     }
 
     p {

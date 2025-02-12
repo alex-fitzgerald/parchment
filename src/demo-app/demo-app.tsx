@@ -162,13 +162,11 @@ function DemoApp() {
                     >
                         <Moon />
                     </button>
-                    <a href={GITHUB_URL}>
-                        <Github />
-                    </a>
                 </div>
-                <p>
-                    Alex
-                </p>
+                <a href={GITHUB_URL}>
+                    Visit on GitHub
+                    <Github />
+                </a>
             </footer>
         </>
     );
