@@ -31,7 +31,7 @@ export default function ParchmentSection({ children, section, className, style }
         }
 
         return () => removeParchmentSection?.(section);
-    }, [addParchmentSection, section, parchmentSectionRef]);
+    }, [section, parchmentSectionRef]);
 
     return (
         <section
