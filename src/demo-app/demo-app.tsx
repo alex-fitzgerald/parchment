@@ -108,7 +108,7 @@ function DemoApp() {
                         </div>
                     </article>
                     <div className={`parchment-demo-wrapper ${isSmallView ? 'column size-full' : 'row-reverse flex-1'}`}>
-                        <div style={{height: '100%', width: '100%'}}>
+                        <div style={{ height: '100%', width: '100%' }}>
                             <div className="parchment-nav row">
                                 <ParchmentButton section="myFirstSection">
                                     First
@@ -120,20 +120,28 @@ function DemoApp() {
                                     Third
                                 </ParchmentButton>
                             </div>
-                            <Parchment snap={snap}
-                                       scrollIntoViewOptions={{behavior: smoothScroll ? 'smooth' : 'instant'}}
-                                       className="parchment">
-                                <ParchmentSection section="myFirstSection"
-                                                  style={{display: 'flex', alignItems: 'center'}}>
-                                    <Section title="My first section"/>
+                            <Parchment
+                                snap={snap}
+                                scrollIntoViewOptions={{ behavior: smoothScroll ? 'smooth' : 'instant' }}
+                                className="parchment"
+                            >
+                                <ParchmentSection
+                                    section="myFirstSection"
+                                    style={{ display: 'flex', alignItems: 'center' }}
+                                >
+                                    <Section title="My first section" />
                                 </ParchmentSection>
-                                <ParchmentSection section="mySecondSection"
-                                                  style={{display: 'flex', alignItems: 'center'}}>
-                                    <Section title="My second section"/>
+                                <ParchmentSection
+                                    section="mySecondSection"
+                                    style={{ display: 'flex', alignItems: 'center' }}
+                                >
+                                    <Section title="My second section" />
                                 </ParchmentSection>
-                                <ParchmentSection section="myThirdSection"
-                                                  style={{display: 'flex', alignItems: 'center'}}>
-                                    <Section title="My third section"/>
+                                <ParchmentSection
+                                    section="myThirdSection"
+                                    style={{ display: 'flex', alignItems: 'center' }}
+                                >
+                                    <Section title="My third section" />
                                 </ParchmentSection>
                             </Parchment>
                         </div>
@@ -142,12 +150,15 @@ function DemoApp() {
             </ParchmentProvider>
             <footer>
                 <div>
-                    <button name="toggle-smooth" onClick={handleToggleDarkMode}
-                            className={`toggle-button ${isDarkMode ? 'active' : ''}`}>
-                        <Moon/>
+                    <button
+                        name="toggle-smooth"
+                        onClick={handleToggleDarkMode}
+                        className={`toggle-button ${isDarkMode ? 'active' : ''}`}
+                    >
+                        <Moon />
                     </button>
                     <a href={GITHUB_URL}>
-                        <Github/>
+                        <Github />
                     </a>
                 </div>
                 <p>
