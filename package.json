@@ -39,10 +39,6 @@
     "vite": "^6.0.5",
     "vitest": "^2.1.9"
   },
-  "files": [
-    "/dist",
-    "package.json"
-  ],
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
