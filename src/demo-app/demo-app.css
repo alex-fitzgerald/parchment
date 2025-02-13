@@ -66,6 +66,7 @@ body {
     font-family: "Geist", serif;
     font-optical-sizing: auto;
     font-style: normal;
+    position: relative;
 }
 
 button {
@@ -89,6 +90,7 @@ main {
     max-height: 100%;
     position: relative;
     gap: var(--spacious);
+    z-index: 1;
 }
 
 .blurb-container {

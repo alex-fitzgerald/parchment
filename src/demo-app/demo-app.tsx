@@ -10,6 +10,7 @@ import ParchmentButton from '../components/parchment-button.tsx';
 import ParchmentProvider from '../state/parchment-provider.tsx';
 import Github from './svgs/github.tsx';
 import Moon from './svgs/moon.tsx';
+import { Noise } from '@alex-fitzgerald/noise';
 
 const GITHUB_URL = 'https://github.com/alex-fitzgerald/parchment';
 
@@ -168,6 +169,7 @@ function DemoApp() {
                     <Github />
                 </a>
             </footer>
+            <Noise />
         </>
     );
 }
