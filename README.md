@@ -8,7 +8,7 @@ Parchment is a simple wee handful of headless components to help compose scrolla
 
 <small>_Scroll_able... Parchment... 📜</small>
 
-<a href="parchment-five.vercel.app">Check out the demo here</a>
+<a href="https://parchment-five.vercel.app/">Check out the demo here</a>
 
 ## Installation
 ```bash
