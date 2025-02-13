@@ -18,20 +18,11 @@ npm install parchment
 Done. No dependencies outside of `react` and `react-dom`.
 
 ## Usage
-We're using React Context under the hood, so you'll need to wrap any parchment fellas with the `ParchmentProvider`.
+First off the bat: we're using Context, so you'll need to wrap any parchment fellas with the `ParchmentProvider`.
 
-```jsx
-import { ParchmentProvider } from 'parchment';
-
-return (
-    <ParchmentProvider>
-        {/* Your scrollable sections and their buttons here */}
-    </ParchmentProvider>
-);
-```
-
-## Parchment
+## `Parchment`
 The scroll, which will have sections that can be scrolled to. Can accept any `ReactNode` children.
+Only `ParchmentSections` are observed by our `parchment` scrollspy. 
 
 ```tsx
 import { Parchment } from 'parchment';
