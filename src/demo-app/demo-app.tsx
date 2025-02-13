@@ -32,7 +32,7 @@ interface ControlProps {
 
 function Controls({ snap, toggleSnap, smoothScroll, toggleSmoothScroll }: ControlProps) {
     return (
-        <div className="controls gap-tight">
+        <div className="controls">
             <div className={`${snap ? 'active' : ''} toggle-button-field`}>
                 <label htmlFor="toggle-snap" onClick={toggleSnap}>Snap to section</label>
                 <button name="toggle-snap" onClick={toggleSnap} />

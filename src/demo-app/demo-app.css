@@ -222,7 +222,13 @@ main {
     align-items: start;
     padding: var(--tight);
     border-radius: var(--tight);
+    gap: var(--tight);
     border: 1px solid hsla(var(--foreground-subtle), 5%);
+
+    button {
+        width: var(--spacious);
+        height: var(--spacious);
+    }
 }
 
 .gap-tight {
