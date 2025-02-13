@@ -108,7 +108,7 @@ function DemoApp() {
                                     📜 React Parchment
                                 </h1>
                                 <p>
-                                    Parchment is a simple React library for providing visual feedback for scrollable sections.
+                                    Parchment is a simple React library for composing scrollspies.
                                 </p>
                             </div>
                             <div className="parchment-nav-wrapper row">
