@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import type { ParchmentSectionRef } from '../types';
-import useParchment from './use-parchment';
+import type { ParchmentSectionRef } from '../types.ts';
+import useParchment from './use-parchment.ts';
 
 /**
  * Creates an IntersectionObserver to monitor the provided

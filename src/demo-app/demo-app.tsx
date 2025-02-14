@@ -1,13 +1,13 @@
 import './demo-app.css';
-import Parchment from '../components/parchment.tsx';
+import Parchment from '../parchment/components/parchment.tsx';
 import {
     useEffect,
     useState,
     useLayoutEffect,
 } from 'react';
-import ParchmentSection from '../components/parchment-section.tsx';
-import ParchmentButton from '../components/parchment-button.tsx';
-import ParchmentProvider from '../state/parchment-provider.tsx';
+import ParchmentSection from '../parchment/components/parchment-section.tsx';
+import ParchmentButton from '../parchment/components/parchment-button.tsx';
+import ParchmentProvider from '../parchment/state/parchment-provider.tsx';
 import Github from './svgs/github.tsx';
 import Moon from './svgs/moon.tsx';
 import { Noise } from '@alex-fitzgerald/noise';

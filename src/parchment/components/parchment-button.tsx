@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { ParchmentSectionKey } from '../types';
-import useParchment from '../hooks/use-parchment';
+import { ParchmentSectionKey } from '../types.ts';
+import useParchment from '../hooks/use-parchment.ts';
 
 interface ButtonProps {
     /**

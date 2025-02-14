@@ -3,7 +3,7 @@ import {
     ReactNode,
     useLayoutEffect,
 } from 'react';
-import useParchment from '../hooks/use-parchment';
+import useParchment from '../hooks/use-parchment.ts';
 
 export interface ParchmentOptions {
     /**

@@ -5,8 +5,8 @@ import {
     useRef,
 } from 'react';
 import useObserverIntersection from '../hooks/use-observer-intersection.ts';
-import { type ParchmentSectionKey } from '../types';
-import useParchment from '../hooks/use-parchment';
+import { type ParchmentSectionKey } from '../types.ts';
+import useParchment from '../hooks/use-parchment.ts';
 
 interface ParchmentSectionProps {
     children: ReactNode;

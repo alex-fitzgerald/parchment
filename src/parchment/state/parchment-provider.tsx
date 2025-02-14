@@ -3,12 +3,12 @@ import {
     useRef,
     useState,
 } from 'react';
-import ParchmentContext from './parchment-context';
+import ParchmentContext from './parchment-context.ts';
 import type {
     ParchmentSectionKey,
     ParchmentSectionRef,
     ParchmentSections,
-} from '../types';
+} from '../types.ts';
 
 const DEFAULT_THRESHOLD = 0.5;
 

@@ -1,4 +1,4 @@
-import type { ParchmentSectionKey, ParchmentSectionRef } from '../types';
+import type { ParchmentSectionKey, ParchmentSectionRef } from '../types.ts';
 
 export const PARCHMENT_ACTION = {
     SET_CURRENT_PARCHMENT_SECTION: 'SET_CURRENT_PARCHMENT_SECTION',

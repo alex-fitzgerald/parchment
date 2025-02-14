@@ -3,4 +3,4 @@ export {
     ParchmentProvider,
     ParchmentButton,
     type ParchmentOptions
-} from './src';
+} from './src/parchment';

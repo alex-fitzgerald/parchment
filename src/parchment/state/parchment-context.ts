@@ -3,7 +3,7 @@ import type {
     ParchmentSectionRef,
     ParchmentSectionKey,
     ParchmentSections,
-} from '../types';
+} from '../types.ts';
 
 interface ParchmentContext {
     parchmentContainerRef: RefObject<HTMLDivElement>;
