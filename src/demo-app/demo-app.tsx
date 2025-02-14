@@ -11,6 +11,7 @@ import ParchmentProvider from '../parchment/state/parchment-provider.tsx';
 import Github from './svgs/github.tsx';
 import Moon from './svgs/moon.tsx';
 import { Noise } from '@alex-fitzgerald/noise';
+import Logo from './logo.tsx';
 
 const GITHUB_URL = 'https://github.com/alex-fitzgerald/parchment';
 
@@ -164,6 +165,7 @@ function DemoApp() {
                         <Moon />
                     </button>
                 </div>
+                <Logo />
                 <a href={GITHUB_URL}>
                     Visit on GitHub
                     <Github />

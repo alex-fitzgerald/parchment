@@ -1,8 +1,4 @@
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-
     --tight: 8px;
     --spacious: 32px;
 
@@ -28,7 +24,6 @@
         inset 5px 5px 10px #c4c4c4, inset -5px -5px 10px #ffffff,
         inset -4px -4px 8px -4px hsla(var(--accent), 50%)
     ;
-
 }
 
 html {
@@ -256,6 +251,7 @@ footer {
     align-items: center;
     padding: var(--tight);
     border-top: 1px solid hsla(var(--foreground-subtle), 5%);
+    font-size: 0.675rem;
 
     a {
         display: flex;
@@ -263,11 +259,10 @@ footer {
         color: var(--foreground);
         text-decoration: none;
         gap: var(--tight);
-        font-size: 0.675rem;
-    }
 
-    p {
-        font-size: 0.675rem;
+        &:hover {
+            opacity: 0.75;
+        }
     }
 
     .toggle-button {
@@ -286,4 +281,10 @@ footer {
         gap: var(--spacious);
         align-items: center;
     }
+}
+
+.logo {
+    font-family: "Cormorant Upright", serif;
+    font-size: 1rem;
+    margin: 0;
 }
