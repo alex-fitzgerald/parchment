@@ -88,6 +88,11 @@ main {
     z-index: 1;
 }
 
+h1 {
+    font-family: "Cormorant Upright", serif;
+    font-size: 3rem;
+}
+
 .blurb-container {
     display: flex;
     flex-direction: column;
@@ -104,6 +109,10 @@ main {
 .blurb {
     width: var(--container-size);
     text-align: start;
+
+    h1 {
+        margin: 0;
+    }
 }
 
 .row {
@@ -285,6 +294,7 @@ footer {
 
 .logo {
     font-family: "Cormorant Upright", serif;
+    font-weight: 700;
     font-size: 1rem;
     margin: 0;
 }

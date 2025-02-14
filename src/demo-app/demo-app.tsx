@@ -107,7 +107,7 @@ function DemoApp() {
                         <article>
                             <div className="blurb">
                                 <h1>
-                                    📜 React Parchment
+                                    Parchment
                                 </h1>
                                 <p>
                                     Parchment is a simple React library for composing scrollspies.
@@ -125,15 +125,6 @@ function DemoApp() {
                     </div>
                     <div style={{ justifyContent: 'start' }} className={`parchment-demo-wrapper ${isSmallView ? 'column size-full' : 'row-reverse flex-1'}`}>
                         <div style={{ height: '100%', width: '100%' }}>
-                            <div className="parchment-nav row">
-                                {
-                                    demoSections.map(section => (
-                                        <ParchmentButton section={section} key={section}>
-                                            {section}
-                                        </ParchmentButton>
-                                    ))
-                                }
-                            </div>
                             <Parchment
                                 snap={snap}
                                 scrollIntoViewOptions={{ behavior: smoothScroll ? 'smooth' : 'instant' }}
@@ -151,6 +142,15 @@ function DemoApp() {
                                     ))
                                 }
                             </Parchment>
+                            <div className="parchment-nav row">
+                                {
+                                    demoSections.map(section => (
+                                        <ParchmentButton section={section} key={section}>
+                                            {section}
+                                        </ParchmentButton>
+                                    ))
+                                }
+                            </div>
                         </div>
                     </div>
                 </main>
