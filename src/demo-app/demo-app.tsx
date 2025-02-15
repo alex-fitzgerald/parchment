@@ -72,7 +72,7 @@ function Footer({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean; toggleDar
     return (
         <footer>
             <div className="items-container justify-center">
-                <div className="flex flex-1">
+                <div className="footer-child">
                     <button
                         name="toggle-smooth"
                         onClick={toggleDarkMode}
@@ -81,12 +81,11 @@ function Footer({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean; toggleDar
                         <Moon />
                     </button>
                 </div>
-                <div className="flex flex-1 justify-center">
+                <div className="footer-child">
                     <Logo />
                 </div>
-                <div className="flex flex-1 justify-end">
+                <div className="footer-child">
                     <a href={GITHUB_URL}>
-                        Visit on GitHub
                         <Github />
                     </a>
                 </div>
