@@ -121,7 +121,7 @@ h1 {
     padding: 2px;
 
     > div {
-        max-height: calc(var(--container-size) / 2);
+        max-height: calc(var(--container-size) / 3);
         max-width: calc(var(--container-size) / 2);
         display: flex;
         gap: var(--tight);

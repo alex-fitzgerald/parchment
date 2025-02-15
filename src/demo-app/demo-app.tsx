@@ -55,9 +55,6 @@ const demoSections = [
     'Second',
     'Third',
     'Fourth',
-    'Fifth',
-    'Sixth',
-    'Seventh',
     'Etcetera',
 ];
 
