@@ -132,7 +132,7 @@ function ParchmentNav() {
 
 function DemoApp() {
     const [snap, setSnap] = useState(false);
-    const [smoothScroll, setSmoothScroll] = useState(false);
+    const [smoothScroll, setSmoothScroll] = useState(true);
     const [isDarkMode, setIsDarkMode] = useState(false);
     // const [demoSections] = useState();
 
