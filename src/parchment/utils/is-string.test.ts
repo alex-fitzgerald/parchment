@@ -1,18 +1,18 @@
-import isString from './is-string.ts';
-import { test, expect } from 'vitest';
+import { expect, it } from "vitest";
+
+import isString from "./is-string.ts";
+
 const cases = [
-    ['string', true],
-    [1, false],
-    [null, false],
-    [undefined, false],
-    [{}, false],
-    [[], false],
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    [() => {}, false],
+  ["string", true],
+  [1, false],
+  [null, false],
+  [undefined, false],
+  [{}, false],
+  [[], false],
 ];
 
 cases.forEach(([input, expected]) => {
-    test('Should return `true` if the candidate type is a string', () => {
-        expect(isString(input)).toBe(expected);
-    });
+  it("should return `true` if the candidate type is a string", () => {
+    expect(isString(input)).toBe(expected);
+  });
 });

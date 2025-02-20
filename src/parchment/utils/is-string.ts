@@ -1,1 +1,1 @@
-export default (candidate: unknown) => typeof candidate === 'string';
+export default (candidate: unknown) => typeof candidate === "string";

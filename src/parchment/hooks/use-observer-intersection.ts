@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
-import type { ParchmentSectionRef } from '../types.ts';
-import useParchment from './use-parchment.ts';
+import { useEffect } from "react";
+
+import type { ParchmentSectionRef } from "../types.ts";
+
+import useParchment from "./use-parchment.ts";
 
 /**
  * Creates an IntersectionObserver to monitor the provided
@@ -8,35 +10,35 @@ import useParchment from './use-parchment.ts';
  * update the `currentParchmentSection` accordingly.
  */
 type ParchmentIntersectionCallback = (id: string) => void;
-export default function useObserverIntersection(parchmentSectionElement: ParchmentSectionRef['current'], callback: ParchmentIntersectionCallback) {
-    const { parchmentSections, parchmentContainerRef, intersectionThreshold } = useParchment();
+export default function useObserverIntersection(parchmentSectionElement: ParchmentSectionRef["current"], callback: ParchmentIntersectionCallback) {
+  const { parchmentSections, parchmentContainerRef, intersectionThreshold } = useParchment();
 
-    useEffect(() => {
-        if (!parchmentContainerRef.current) {
+  useEffect(() => {
+    if (!parchmentContainerRef.current) {
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const { isIntersecting, target } of entries) {
+        if (isIntersecting && target instanceof HTMLElement) {
+          const { id } = target;
+          if (!id || !parchmentSections?.[id]) {
             return;
+          }
+
+          callback(id);
         }
+      }
+    }, { threshold: intersectionThreshold, root: parchmentContainerRef.current, rootMargin: "0px" });
 
-        const observer = new IntersectionObserver((entries) => {
-            for (const { isIntersecting, target } of entries) {
-                if (isIntersecting && target instanceof HTMLElement) {
-                    const { id } = target;
-                    if (!id || !parchmentSections?.[id]) {
-                        return;
-                    }
+    if (parchmentSectionElement) {
+      observer.observe(parchmentSectionElement);
+    }
 
-                    callback(id);
-                }
-            }
-        }, { threshold: intersectionThreshold, root: parchmentContainerRef.current, rootMargin: '0px' });
-
-        if (parchmentSectionElement) {
-            observer.observe(parchmentSectionElement);
-        }
-
-        return () => {
-            if (parchmentSectionElement) {
-                observer.unobserve(parchmentSectionElement);
-            }
-        };
-    }, [parchmentSectionElement, callback]);
+    return () => {
+      if (parchmentSectionElement) {
+        observer.unobserve(parchmentSectionElement);
+      }
+    };
+  }, [parchmentSectionElement, callback]);
 }
