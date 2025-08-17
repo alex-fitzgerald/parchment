@@ -6,16 +6,12 @@ I love little scrollspies, particularly `notion's`. While they're simple as anyt
 
 Parchment is a simple wee handful of headless components to help compose scrollspies. No dependencies other than the usual `react`
 
-<small>_Scroll_able... Parchment... 📜</small>
-
 <a href="https://parchment.alexfitzgerald.io/">Check out the demo here</a>
 
 ## Installation
 ```bash
 npm install parchment
 ```
-
-Done. No dependencies outside of `react` and `react-dom`.
 
 ## Usage
 First off the bat: we're using Context, so you'll need to wrap any parchment fellas with the `ParchmentProvider`.
