@@ -162,6 +162,12 @@ h1 {
 
 }
 
+header {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
 .demo-wrapper {
     display: flex;
     gap: var(--tight);
