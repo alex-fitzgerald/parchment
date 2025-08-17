@@ -197,7 +197,7 @@ function DemoApp() {
             </div>
           </div>
         </article>
-      </main >
+      </main>
       <Footer toggleDarkMode={handleToggleDarkMode} isDarkMode={isDarkMode} />
       <Noise />
     </>
