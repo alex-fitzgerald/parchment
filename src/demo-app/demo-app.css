@@ -329,3 +329,10 @@ footer {
     display: flex;
     flex: 1;
 }
+
+.lucide {
+    stroke-width: 1;
+    color: var(--foreground);
+    width: 14px;
+    height: 14px;
+}

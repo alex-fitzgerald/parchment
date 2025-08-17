@@ -1,10 +1,7 @@
 import "./demo-app.css";
 
 import { Noise } from "@alex-fitzgerald/noise";
-import {
-  useLayoutEffect,
-  useState,
-} from "react";
+import { useLayoutEffect, useState } from "react";
 
 import ParchmentButton from "../parchment/components/parchment-button.tsx";
 import ParchmentSection from "../parchment/components/parchment-section.tsx";
@@ -13,15 +10,15 @@ import ParchmentProvider from "../parchment/state/parchment-provider.tsx";
 import Logo from "./logo.tsx";
 import Github from "./svgs/github.tsx";
 import Moon from "./svgs/moon.tsx";
+import Magnet from "./svgs/magnet.tsx";
+import Waves from "./svgs/waves.tsx";
 
 const GITHUB_URL = "https://github.com/alex-fitzgerald/parchment";
 
 function Section({ title }: { title: string }) {
   return (
     <div className="section">
-      <p>
-        {title}
-      </p>
+      <p>{title}</p>
     </div>
   );
 }
@@ -33,16 +30,29 @@ interface ControlProps {
   toggleSmoothScroll: () => void;
 }
 
-function Controls({ snap, toggleSnap, smoothScroll, toggleSmoothScroll }: ControlProps) {
+function Controls({
+  snap,
+  toggleSnap,
+  smoothScroll,
+  toggleSmoothScroll,
+}: ControlProps) {
   return (
     <div className="controls">
       <div className={`${snap ? "active" : ""} toggle-button-field`}>
-        <label htmlFor="toggle-snap" onClick={toggleSnap}>Snap to section</label>
-        <button name="toggle-snap" onClick={toggleSnap} />
+        <label htmlFor="toggle-snap" onClick={toggleSnap}>
+          Snap to section
+        </label>
+        <button name="toggle-snap" onClick={toggleSnap}>
+          <Magnet />
+        </button>
       </div>
       <div className={`${smoothScroll ? "active" : ""} toggle-button-field`}>
-        <label htmlFor="toggle-smooth" onClick={toggleSmoothScroll}>Smooth scrolling</label>
-        <button name="toggle-smooth" onClick={toggleSmoothScroll} />
+        <label htmlFor="toggle-smooth" onClick={toggleSmoothScroll}>
+          Smooth scrolling
+        </label>
+        <button name="toggle-smooth" onClick={toggleSmoothScroll}>
+          <Waves />
+        </button>
       </div>
     </div>
   );
@@ -52,25 +62,23 @@ function toggleDarkMode() {
   document.documentElement.classList.toggle("dark-mode");
 }
 
-const demoSections = [
-  "First",
-  "Second",
-  "Third",
-  "Fourth",
-  "Etcetera",
-];
+const demoSections = ["First", "Second", "Third", "Fourth", "Etcetera"];
 
 function IntroBlurb() {
   return (
     <div className="blurb">
-      <p>
-        Parchment is a simple React library for composing scrollspies.
-      </p>
+      <p>Parchment is a simple React library for composing scrollspies.</p>
     </div>
   );
 }
 
-function Footer({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean; toggleDarkMode: () => void }) {
+function Footer({
+  isDarkMode,
+  toggleDarkMode,
+}: {
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
+}) {
   return (
     <footer>
       <div className="items-container justify-center">
@@ -96,24 +104,28 @@ function Footer({ isDarkMode, toggleDarkMode }: { isDarkMode: boolean; toggleDar
   );
 }
 
-function ParchmentSections({ snap, smoothScroll }: { snap: boolean; smoothScroll: boolean }) {
+function ParchmentSections({
+  snap,
+  smoothScroll,
+}: {
+  snap: boolean;
+  smoothScroll: boolean;
+}) {
   return (
     <Parchment
       snap={snap}
       scrollIntoViewOptions={{ behavior: smoothScroll ? "smooth" : "instant" }}
       className="parchment"
     >
-      {
-        demoSections.map(section => (
-          <ParchmentSection
-            section={section}
-            key={section}
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            <Section title={section} />
-          </ParchmentSection>
-        ))
-      }
+      {demoSections.map((section) => (
+        <ParchmentSection
+          section={section}
+          key={section}
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <Section title={section} />
+        </ParchmentSection>
+      ))}
     </Parchment>
   );
 }
@@ -121,13 +133,11 @@ function ParchmentSections({ snap, smoothScroll }: { snap: boolean; smoothScroll
 function ParchmentNav() {
   return (
     <div className="parchment-nav row">
-      {
-        demoSections.map(section => (
-          <ParchmentButton section={section} key={section}>
-            {section}
-          </ParchmentButton>
-        ))
-      }
+      {demoSections.map((section) => (
+        <ParchmentButton section={section} key={section}>
+          {section}
+        </ParchmentButton>
+      ))}
     </div>
   );
 }
@@ -149,31 +159,34 @@ function DemoApp() {
 
   const handleToggleDarkMode = () => {
     toggleDarkMode();
-    setIsDarkMode(prevDarkMode => !prevDarkMode);
+    setIsDarkMode((prevDarkMode) => !prevDarkMode);
   };
 
   return (
     <>
+      <h1>Parchment</h1>
       <main>
         <article>
-          <h1>
-            Parchment
-          </h1>
           <div className="demo-wrapper">
             <div className="blurb-panel">
               <IntroBlurb />
               <Controls
                 snap={snap}
-                toggleSnap={() => setSnap(prevSnap => !prevSnap)}
+                toggleSnap={() => setSnap((prevSnap) => !prevSnap)}
                 smoothScroll={smoothScroll}
-                toggleSmoothScroll={() => setSmoothScroll(prevSmoothScroll => !prevSmoothScroll)}
+                toggleSmoothScroll={() =>
+                  setSmoothScroll((prevSmoothScroll) => !prevSmoothScroll)
+                }
               />
             </div>
             <div className="demo-panel">
               <ParchmentProvider>
                 <div className="parchment-sections">
                   <div style={{ height: "100%", width: "100%" }}>
-                    <ParchmentSections snap={snap} smoothScroll={smoothScroll} />
+                    <ParchmentSections
+                      snap={snap}
+                      smoothScroll={smoothScroll}
+                    />
                   </div>
                 </div>
                 <ParchmentNav />
