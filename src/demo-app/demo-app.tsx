@@ -170,29 +170,35 @@ function DemoApp() {
             <h1>Parchment</h1>
           </header>
           <div style={{ flex: 1, display: "flex" }}>
-            <div className="demo-wrapper">
-              <div className="blurb-panel">
-                <IntroBlurb />
-                <Controls
-                  snap={snap}
-                  toggleSnap={() => setSnap(prevSnap => !prevSnap)}
-                  smoothScroll={smoothScroll}
-                  toggleSmoothScroll={() =>
-                    setSmoothScroll(prevSmoothScroll => !prevSmoothScroll)}
-                />
-              </div>
-              <div className="demo-panel">
-                <ParchmentProvider>
-                  <div className="parchment-sections">
-                    <div style={{ height: "100%", width: "100%" }}>
-                      <ParchmentSections
-                        snap={snap}
-                        smoothScroll={smoothScroll}
-                      />
-                    </div>
+
+            <div>
+
+              <div style={{ display: "flex" }}>
+                <div className="demo-wrapper">
+                  <div className="blurb-panel">
+                    <IntroBlurb />
+                    <Controls
+                      snap={snap}
+                      toggleSnap={() => setSnap(prevSnap => !prevSnap)}
+                      smoothScroll={smoothScroll}
+                      toggleSmoothScroll={() =>
+                        setSmoothScroll(prevSmoothScroll => !prevSmoothScroll)}
+                    />
                   </div>
-                  <ParchmentNav />
-                </ParchmentProvider>
+                </div>
+                <div className="demo-panel">
+                  <ParchmentProvider>
+                    <div className="parchment-sections">
+                      <div style={{ height: "100%", width: "100%" }}>
+                        <ParchmentSections
+                          snap={snap}
+                          smoothScroll={smoothScroll}
+                        />
+                      </div>
+                    </div>
+                    <ParchmentNav />
+                  </ParchmentProvider>
+                </div>
               </div>
             </div>
           </div>

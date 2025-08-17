@@ -175,12 +175,12 @@ header {
     max-width: var(--container-size);
     flex-wrap: wrap;
     justify-content: center;
+    height: fit-content;
 }
 
 .demo-panel {
     display: flex;
     gap: var(--tight);
-    flex-grow: 1;
     padding: var(--tight);
     max-width: var(--panel-size);
 }
@@ -191,10 +191,12 @@ header {
     gap: var(--tight);
     flex-grow: 1;
     padding: var(--tight);
+    justify-content: space-between;
     max-width: var(--panel-size);
 
     p {
         max-width: var(--panel-size);
+        font-size: 0.875rem;
     }
 }
 
