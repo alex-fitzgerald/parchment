@@ -9,8 +9,8 @@ import Parchment from "../parchment/components/parchment.tsx";
 import ParchmentProvider from "../parchment/state/parchment-provider.tsx";
 import Logo from "./logo.tsx";
 import Github from "./svgs/github.tsx";
-import Moon from "./svgs/moon.tsx";
 import Magnet from "./svgs/magnet.tsx";
+import Moon from "./svgs/moon.tsx";
 import Waves from "./svgs/waves.tsx";
 
 const GITHUB_URL = "https://github.com/alex-fitzgerald/parchment";
@@ -117,7 +117,7 @@ function ParchmentSections({
       scrollIntoViewOptions={{ behavior: smoothScroll ? "smooth" : "instant" }}
       className="parchment"
     >
-      {demoSections.map((section) => (
+      {demoSections.map(section => (
         <ParchmentSection
           section={section}
           key={section}
@@ -133,7 +133,7 @@ function ParchmentSections({
 function ParchmentNav() {
   return (
     <div className="parchment-nav row">
-      {demoSections.map((section) => (
+      {demoSections.map(section => (
         <ParchmentButton section={section} key={section}>
           {section}
         </ParchmentButton>
@@ -159,7 +159,7 @@ function DemoApp() {
 
   const handleToggleDarkMode = () => {
     toggleDarkMode();
-    setIsDarkMode((prevDarkMode) => !prevDarkMode);
+    setIsDarkMode(prevDarkMode => !prevDarkMode);
   };
 
   return (
@@ -172,11 +172,10 @@ function DemoApp() {
               <IntroBlurb />
               <Controls
                 snap={snap}
-                toggleSnap={() => setSnap((prevSnap) => !prevSnap)}
+                toggleSnap={() => setSnap(prevSnap => !prevSnap)}
                 smoothScroll={smoothScroll}
                 toggleSmoothScroll={() =>
-                  setSmoothScroll((prevSmoothScroll) => !prevSmoothScroll)
-                }
+                  setSmoothScroll(prevSmoothScroll => !prevSmoothScroll)}
               />
             </div>
             <div className="demo-panel">
