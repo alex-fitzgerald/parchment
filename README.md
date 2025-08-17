@@ -4,8 +4,6 @@ I love little scrollspies, particularly `notion's`. While they're simple as anyt
 
 <img alt="Notion's cute wee scrollspy" src="https://github.com/user-attachments/assets/b2ad4bbe-835e-4ea2-aac4-81d29b445158" width="150px" />
 
-Parchment is a simple wee handful of headless components to help compose scrollspies. No dependencies other than the usual `react`
-
 <a href="https://parchment.alexfitzgerald.io/">Check out the demo here</a>
 
 ## Installation
